@@ -1,3 +1,27 @@
+# Wersja 3 — ciepłe fotografie, ruch i podglądy aplikacji
+
+Wprowadzono dwie wygenerowane sceny: wspólny spacer trojga znajomych z psami oraz spokojną relację kobiety z kotem i psem. Zaktualizowano też oba obrazy telefonów w hero. Pochodzenie w [GENERATED_IMAGES.md](public/assets/GENERATED_IMAGES.md). Dostarczone screeny są referencją układu; prawdziwych rozmów i danych profili nie opublikowano.
+
+`npm run check` i `npm run build` przeszły. Build: JS 143,33 kB / 53,76 kB gzip, CSS 32,15 kB / 7,23 kB gzip. To rozmiary bundlera, nie pomiar Core Web Vitals.
+
+15 grup sprawdzeń Chromium na produkcyjnym buildzie: [zapis wyników](artifacts/v3-qa-results.json). Szerokości 1440, 1024, 768, 640, 390 i 320 px; brak poziomego przepełnienia. Nie testowano fizycznego telefonu ani natywnego Safari.
+
+- Zachowany Satoshi bez kursywy, jednolita hierarchia nagłówków, dokładne #A12A70 i gradient #DF0D54 → #781566. Oznaczenia marki zawierają dokładnie PetConnect, bez kropki.
+- Nowe zdjęcia lokalnie załadowane; brak starszych fotografii w aktywnym DOM. Status EN w przygotowaniu, PL dostępne i prawdziwe linki sklepów bez zmian.
+- Connect: odwracalne polubienie i otwieranie przykładowego komentarza. Learn: wyszukiwanie walk / care, stan bez wyników i przywrócenie po wyczyszczeniu, rozwijana notatka. Discover: Places / Services z opisem przykładowego miejsca lub biznesu. Cztery pozycje dolnej nawigacji odpowiadają referencji aplikacji; Profile jest ilustracyjne.
+- Działające zakładki, strzałki i Home/End; zgodny kierunek aria desktop/mobile. Menu mobilne, Escape i kotwice sprawdzone.
+- Formularz odrzuca puste dane, ustawia temat biznesowy, poprawnie koduje mailto i unieważnia szkic po edycji. Nic nie wysłano.
+- Maskowanie i delikatny ruch zdjęcia obejrzano w czterech kadrach: [wejście](artifacts/v3-community-motion-entry.png), [środek](artifacts/v3-community-motion-middle.png), [wyjście](artifacts/v3-community-motion-exit.png), [powrót](artifacts/v3-community-motion-reverse.png). Macierze zdjęcia i maska wracają do stanu wejściowego. Linia kroków zmienia skalę 0 → 1 → 0. Perspektywa telefonu również odwracalna, bez sticky i przejmowania scrolla.
+- Reduced motion usuwa maskę i ruch, zachowując funkcje. Zero błędów JavaScript i nieudanych requestów w pełnym przebiegu.
+
+Dodatkowo nagrano naturalne przewijanie przez zdarzenia wheel: [animowany fragment](artifacts/v3-motion-preview.gif). GIF pokazuje wygląd w czasie, nie jest pomiarem płynności ani publicznym hostingiem.
+
+Aktualne obrazy: [cała strona](artifacts/v3-desktop-full.png), [hero](artifacts/v3-desktop-hero.png), [relacje](artifacts/v3-desktop-community.png), [mobile](artifacts/v3-mobile-390-full.png). Zrzuty dostawy wykonano w nowej sesji, bez danych testowych w formularzu.
+
+Angielskie UI jest oznaczoną koncepcją. Fotografie i przykładowe treści nie stanowią dowodu prawdziwego spotkania lub partnerstwa. Kontakt przygotowuje szkic email. Nie uruchomiono backendu ani nie opublikowano strony na hostingu. Poniżej zachowano raporty historyczne poprzednich wersji.
+
+---
+
 # Wersja 2 — aktualna weryfikacja po uwagach o czytelności
 
 Wersja 2 zastępuje odrzuconą pierwszą propozycję. Obejrzano nowe otwarcie, całą stronę, kroki, korzyści, prezentację, kontakt i widoki mobilne. Zastosowano dokładne kolory aplikacji, jej poziomy gradient i Satoshi bez kursywy. Zachowano nazwę PetConnect bez kropki. Układ nie ma już długiej sceny sticky, a podstawowe korzyści są widoczne bez klikania.

@@ -15,12 +15,20 @@ const pin =
   '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>';
 const book =
   '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>';
+const commentIcon =
+  '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11a9 9 0 0 1-9 9H4l-2 2v-11a9 9 0 1 1 19 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7 11h.1M12 11h.1M17 11h.1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>';
+const bellIcon =
+  '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 17h14l-2-3V9a5 5 0 0 0-10 0v5l-2 3Zm5 3h4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+const homeIcon =
+  '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m3 10 9-7 9 7v11h-6v-7H9v7H3V10Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
+const educationIcon =
+  '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m2 8 10-5 10 5-10 5L2 8Zm4 2v7c4 3 8 3 12 0v-7M22 8v9" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>';
 const mark = (className = "") =>
   `<img class="brand-mark ${className}" src="${asset("petconnect-mark.svg")}" width="40" height="38" alt="" />`;
 const brand = (className = "") =>
   `<span class="brand ${className}">${mark()}<span>PetConnect</span></span>`;
 const photo = (name, alt, className = "", priority = false) =>
-  `<img class="${className}" src="${asset(`${name}-1600.webp`)}" srcset="${asset(`${name}-800.webp`)} 800w, ${asset(`${name}-1600.webp`)} 1600w${priority ? `, ${asset(`${name}-2400.webp`)} 2400w` : ""}" sizes="${priority ? "(max-width: 600px) 1200px, 1700px" : "(max-width: 700px) 100vw, 55vw"}" width="1600" height="${name === "together" ? "658" : "1065"}" alt="${alt}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" />`;
+  `<img class="${className}" src="${asset(`${name}-1600.webp`)}" srcset="${asset(`${name}-800.webp`)} 800w, ${asset(`${name}-1600.webp`)} 1600w${priority ? `, ${asset(`${name}-2400.webp`)} 2400w` : ""}" sizes="${priority ? "(max-width: 600px) 1200px, 1700px" : "(max-width: 700px) 100vw, 55vw"}" width="1600" height="${name === "community-walk" ? "900" : "1067"}" alt="${alt}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async" />`;
 
 const modes = {
   connect: {
@@ -78,9 +86,14 @@ document.querySelector("#app").innerHTML = `
       </div>
     </section>
 
+    <section class="community wrap" aria-labelledby="community-title">
+      <div class="section-heading"><h2 id="community-title">Life with pets is better together.</h2><p>For the everyday moments, the little discoveries<br>and the friends you meet along the way.</p></div>
+      <div class="community-image-frame">${photo("community-walk", "Friends enjoying a sunny park walk together with their dogs", "community-photo")}</div>
+    </section>
+
     <section id="how-it-works" class="how-it-works section-pad" aria-labelledby="how-title">
       <div class="wrap"><div class="section-heading"><h2 id="how-title">How does PetConnect work?</h2><p>Getting started with the Polish app is simple.</p></div>
-      <div class="steps-grid">
+      <div class="steps-grid"><span class="step-connector" aria-hidden="true"><span class="step-progress"></span></span>
         <article class="step"><span class="step-number">1</span><h3>Download the app</h3><p>Get PetConnect from the App Store or Google Play. The app currently works in Polish.</p></article>
         <article class="step"><span class="step-number">2</span><h3>Create your profile</h3><p>Set up your account and introduce yourself and your pets to the community.</p></article>
         <article class="step"><span class="step-number">3</span><h3>Connect and explore</h3><p>Share a post, read pet-care articles and explore pet-related places and services.</p></article>
@@ -111,31 +124,30 @@ document.querySelector("#app").innerHTML = `
                 .join("")}
             </div>
             <div class="feature-explanation" aria-live="polite" aria-atomic="true"><h3 id="feature-title">${modes.connect.line}</h3><p id="feature-description">${modes.connect.description}</p></div>
-            <p class="preview-disclosure">English concept preview.<br>Illustrative content, based on the Polish app.</p>
+            <p class="preview-disclosure">English concept preview.<br>Sample names, posts and places. Based on the Polish app.</p>
           </div>
           <div class="phone-space">
             <div class="phone-position">
-              <div class="phone-device">
+              <div class="phone-device" data-mode="connect">
                 <div class="phone-edge" aria-hidden="true"></div><div class="phone-button" aria-hidden="true"></div>
                 <div class="phone-face">
                   <div class="phone-hardware" aria-hidden="true"><span>9:41</span><span class="dynamic-island"></span><span class="phone-signal">▮▮▮ <span class="battery"></span></span></div>
-                  <div class="app-header">${mark()}<span>PetConnect</span><span class="app-search" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.6"/></svg></span></div>
+                  <div class="app-header">${mark()}<span class="app-actions" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 5 5" stroke="currentColor" stroke-width="1.6"/></svg>${bellIcon}${commentIcon}</span></div>
                   <section class="app-panel" role="tabpanel" id="panel-connect" aria-labelledby="tab-connect" tabindex="0">
-                    <div class="app-greeting">Your daily dose<br>of <em>good company.</em></div>
-                    <div class="app-story-row" aria-hidden="true"><span><img src="${asset("together-800.webp")}" alt="" /><small>Everyday</small></span><span><img src="${asset("little-companion-800.webp")}" alt="" /><small>Little joys</small></span><span><img src="${asset("next-adventure-800.webp")}" alt="" /><small>Adventures</small></span></div>
-                    <div class="demo-post"><div class="demo-post-label">${mark()}<span>A moment worth sharing<small>Example community post</small></span><span aria-hidden="true">···</span></div><img class="demo-post-photo" src="${asset("next-adventure-800.webp")}" width="800" height="533" alt="A smiling white dog sitting between its owners" /><div class="demo-post-actions"><button id="save-moment" type="button" aria-pressed="false" aria-label="Save this moment in the preview">${heart}<span>Save this moment</span></button><span aria-hidden="true">${arrow}</span></div><p>Best part of the day? This little face.</p><p class="demo-action-status" id="save-status" role="status">Try saving this moment.</p></div>
+                    <div class="compose-row"><img class="sample-avatar" src="${asset("home-companions-800.webp")}" alt="" /><span>Share a little moment…</span></div>
+                    <div class="demo-post"><div class="demo-post-label"><img class="sample-avatar" src="${asset("home-companions-800.webp")}" alt="" /><span>Ellie &amp; Teddy<small>Example post · A little while ago</small></span><span aria-hidden="true">···</span></div><img class="demo-post-photo" src="${asset("community-walk-800.webp")}" width="800" height="450" alt="Three friends and their dogs walking together in a sunny park" /><p class="post-caption">Sunday walks are even better with good company.</p><div class="demo-post-actions"><button id="save-moment" type="button" aria-pressed="false" aria-label="Like this moment in the preview">${heart}<span>Like</span></button><button id="preview-comments" type="button" aria-expanded="false" aria-controls="sample-comments">${commentIcon}<span>Comments</span></button></div><div id="sample-comments" class="sample-comments" hidden><strong>Maya &amp; Poppy</strong><p>Looks like a lovely morning! Same time next Sunday?</p><small>Sample comment</small></div><p class="demo-action-status" id="save-status" role="status">Try liking this example post.</p></div>
                   </section>
                   <section class="app-panel" role="tabpanel" id="panel-learn" aria-labelledby="tab-learn" tabindex="0" hidden>
-                    <div class="app-greeting">A little more<br><em>understanding.</em></div><p class="app-section-label">YOUR READING CORNER</p>
-                    <div class="learn-cover"><img src="${asset("little-companion-800.webp")}" alt="An owner spending time with her rabbit" width="800" height="532" /><span>Everyday care</span></div>
-                    <h4 class="learn-title">Getting to know<br>your little companion.</h4><p class="learn-description">A space to discover pet-care articles and explore everyday questions.</p><button class="demo-read-button" id="read-preview" type="button" aria-expanded="false" aria-controls="reading-note">Explore this feature ${arrow}</button><p class="reading-note" id="reading-note" hidden>In PetConnect’s Polish app, the education section brings articles together in one place. This is a feature preview, rather than a published article.</p>
+                    <label class="app-search-box"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="1.6"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="1.6"/></svg><input id="article-search" type="search" placeholder="Search pet-care tips" aria-label="Search example articles" /></label>
+                    <div class="learn-featured"><h4 class="app-section-heading">Most read</h4><div class="learn-cover"><img src="${asset("home-companions-800.webp")}" alt="A woman enjoying a calm moment at home with her cat and dog" width="800" height="533" /><div class="learn-cover-caption"><strong>Little habits. Happier days.</strong><span>Make more time for your companions.</span></div></div></div>
+                    <h4 class="app-section-heading picked-heading">Picked for you</h4><div class="sample-article-list"><article class="sample-article" data-article="walk park friends outdoors"><img src="${asset("community-walk-800.webp")}" width="70" height="70" alt="Friends walking their dogs" /><div><h5>Making walks a shared adventure</h5><p>Small ways to enjoy the outdoors together.</p><span>3 min read · Example</span></div></article><article class="sample-article" data-article="care home cat dog calm companion"><img src="${asset("home-companions-800.webp")}" width="70" height="70" alt="A person relaxing with a cat and dog" /><div><h5>Care starts with the little moments</h5><p>A little time. A closer connection.</p><span>2 min read · Example</span></div></article></div><p id="article-empty" class="article-empty" hidden>No example articles found. Try “walk” or “care”.</p><button class="demo-read-button" id="read-preview" type="button" aria-expanded="false" aria-controls="reading-note">About this preview ${arrow}</button><p class="reading-note" id="reading-note" hidden>The Polish app has a dedicated education section. These English titles are illustrative examples, rather than published advice articles.</p>
                   </section>
                   <section class="app-panel" role="tabpanel" id="panel-discover" aria-labelledby="tab-discover" tabindex="0" hidden>
-                    <div class="app-greeting">A world to<br><em>sniff out.</em></div><div class="map-filters" role="group" aria-label="Illustrative map filter"><button type="button" aria-pressed="true" data-map="places">Places</button><button type="button" aria-pressed="false" data-map="services">Services</button></div>
-                    <div class="demo-map" aria-label="Illustrative map, not real locations"><svg class="map-drawing" viewBox="0 0 300 300" aria-hidden="true"><rect width="300" height="300" fill="#f8f1f6"/><path d="m-20 60 350 40M50-20l30 350M190-20l-30 350M-20 210l350-40M-20 280l350-10" stroke="#fff" stroke-width="13"/><path d="M-20 130Q100 60 155 120T320 110" stroke="#e9d5e3" stroke-width="24" fill="none"/><path d="M-20 130Q100 60 155 120T320 110" stroke="#fdfafd" stroke-width="3" fill="none"/><rect x="205" y="196" width="69" height="49" rx="15" fill="#e8d5e2"/><rect x="95" y="16" width="57" height="42" rx="14" fill="#e8d5e2"/></svg><span class="map-pin map-pin-a">${pin}</span><span class="map-pin map-pin-b">${pin}</span><span class="map-pin map-pin-c">${pin}</span><span class="map-you">You</span><span class="map-watermark">Illustrative map</span></div>
-                    <div class="map-result" aria-live="polite"><span class="map-result-icon">${pin}</span><div><strong id="map-result-title">Pet-friendly places</strong><p id="map-result-description">More little adventures, together.</p></div></div><p class="map-note">Example locations only. UK listings are not confirmed.</p>
+                    <div class="map-topbar"><h4>Near you</h4><div class="map-filters" role="group" aria-label="Illustrative map filter"><button type="button" aria-pressed="true" data-map="places">Places</button><button type="button" aria-pressed="false" data-map="services">Services</button></div></div>
+                    <div class="demo-map" aria-label="Illustrative coastal map, not real locations"><svg class="map-drawing" viewBox="0 0 300 320" aria-hidden="true"><rect width="300" height="320" fill="#b8e2ed"/><path d="M0 0H300V150Q260 157 245 195T180 228Q141 241 138 280L105 320H0Z" fill="#e7e9df"/><path d="M7 12h75v58H7Zm182 43h76v62h-76ZM20 171h65v61H20Z" fill="#d1dfc9"/><path d="M-20 90Q120 70 320 115M77-20Q88 140 120 270M-20 202Q100 150 250 176M155-10Q183 61 165 226" stroke="white" stroke-width="9" fill="none"/><path d="M-20 90Q120 70 320 115M77-20Q88 140 120 270" stroke="#e6d9a8" stroke-width="3" fill="none"/><text x="112" y="64" class="map-place-label">Willow Park</text><text x="24" y="142" class="map-place-label">Bayview</text><text x="187" y="284" class="map-place-label map-sea-label">The bay</text></svg><span class="map-pin map-pin-a">${pin}</span><span class="map-pin map-pin-b">${pin}</span><span class="map-pin map-pin-c">${pin}</span><span class="map-you">You</span><span class="map-watermark">Illustrative map</span></div>
+                    <div class="map-result" aria-live="polite"><span class="map-result-icon">${pin}</span><div><strong id="map-result-title">Pet-friendly places</strong><p id="map-result-description">Bayview Park · Example place</p></div></div><p class="map-note">Sample places only. UK listings are not confirmed.</p>
                   </section>
-                  <div class="app-bottom-nav" aria-hidden="true"><span data-nav="connect" class="active">${heart}<small>Connect</small></span><span data-nav="learn">${book}<small>Learn</small></span><span data-nav="discover">${pin}<small>Discover</small></span></div>
+                  <div class="app-bottom-nav" aria-hidden="true"><span data-nav="connect" class="active">${homeIcon}<small>Home</small></span><span data-nav="discover">${pin}<small>Map</small></span><span data-nav="learn">${educationIcon}<small>Education</small></span><span data-nav="profile"><img src="${asset("home-companions-800.webp")}" alt="" /><small>Profile</small></span></div>
                   <span class="home-indicator" aria-hidden="true"></span>
                 </div>
               </div>
@@ -157,7 +169,7 @@ document.querySelector("#remaining-scenes").innerHTML = `
   <section id="businesses" class="business" aria-labelledby="business-title">
     <div class="business-inner wrap">
       <div class="business-copy"><h2 id="business-title">Do you work with animals?</h2><p>Are you a vet, groomer, pet shop or other animal-related business? Get in touch to discuss PetConnect.</p><a href="#contact" class="button" id="business-contact">Contact us ${arrow}</a></div>
-      <div class="business-visual"><div class="business-photo-frame">${photo("next-adventure", "Two owners sharing a happy moment with their white dog", "business-photo")}</div></div>
+      <div class="business-visual"><div class="business-photo-frame">${photo("home-companions", "A woman sharing an affectionate moment with her cat and dog at home", "business-photo")}</div></div>
     </div>
   </section>
 
@@ -324,15 +336,36 @@ document.querySelector("#save-moment").addEventListener("click", (event) => {
   button.setAttribute(
     "aria-label",
     saved
-      ? "Remove saved moment from the preview"
-      : "Save this moment in the preview",
+      ? "Remove this like from the preview"
+      : "Like this moment in the preview",
   );
   button.querySelector("span").textContent = saved
-    ? "Saved in this preview"
-    : "Save this moment";
+    ? "Liked in this preview"
+    : "Like";
   document.querySelector("#save-status").textContent = saved
-    ? "Saved locally for this preview only."
-    : "Try saving this moment.";
+    ? "Liked in this preview only."
+    : "Try liking this example post.";
+});
+document
+  .querySelector("#preview-comments")
+  .addEventListener("click", (event) => {
+    const button = event.currentTarget;
+    const expanded = button.getAttribute("aria-expanded") !== "true";
+    button.setAttribute("aria-expanded", String(expanded));
+    document.querySelector("#sample-comments").hidden = !expanded;
+  });
+document.querySelector("#article-search").addEventListener("input", (event) => {
+  const query = event.target.value.trim().toLowerCase();
+  let count = 0;
+  document.querySelectorAll("[data-article]").forEach((article) => {
+    const show = `${article.dataset.article} ${article.textContent}`
+      .toLowerCase()
+      .includes(query);
+    article.hidden = !show;
+    if (show) count++;
+  });
+  document.querySelector(".learn-featured").hidden = Boolean(query);
+  document.querySelector("#article-empty").hidden = count > 0;
 });
 document.querySelector("#read-preview").addEventListener("click", (event) => {
   const button = event.currentTarget;
@@ -340,8 +373,8 @@ document.querySelector("#read-preview").addEventListener("click", (event) => {
   button.setAttribute("aria-expanded", String(expanded));
   document.querySelector("#reading-note").hidden = !expanded;
   button.innerHTML = expanded
-    ? `Close feature note ${arrow}`
-    : `Explore this feature ${arrow}`;
+    ? `Close preview note ${arrow}`
+    : `About this preview ${arrow}`;
 });
 document.querySelectorAll("[data-map]").forEach((button) =>
   button.addEventListener("click", () => {
@@ -358,8 +391,8 @@ document.querySelectorAll("[data-map]").forEach((button) =>
       ? "Pet-related services"
       : "Pet-friendly places";
     document.querySelector("#map-result-description").textContent = services
-      ? "Discover the people who care for pets."
-      : "More little adventures, together.";
+      ? "Willow Lane Vets · Example business"
+      : "Bayview Park · Example place";
   }),
 );
 
@@ -371,6 +404,57 @@ media.add(
   },
   (context) => {
     if (context.conditions.reduced) return;
+    gsap.from(".hero-phones", {
+      y: 24,
+      scale: 0.97,
+      opacity: 0,
+      duration: 0.85,
+      ease: "power3.out",
+      clearProps: "opacity,transform",
+    });
+    gsap.fromTo(
+      ".community-image-frame",
+      { clipPath: "inset(0 3% 0 3% round 16px)" },
+      {
+        clipPath: "inset(0 0% 0 0% round 16px)",
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".community",
+          start: "top 85%",
+          end: "center 50%",
+          scrub: 0.65,
+        },
+      },
+    );
+    gsap.fromTo(
+      ".community-photo",
+      { scale: 1.05, yPercent: -1 },
+      {
+        scale: 1.015,
+        yPercent: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".community-image-frame",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.65,
+        },
+      },
+    );
+    gsap.fromTo(
+      ".step-progress",
+      { scaleX: 0 },
+      {
+        scaleX: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".steps-grid",
+          start: "top 80%",
+          end: "top 25%",
+          scrub: 0.5,
+        },
+      },
+    );
     gsap.fromTo(
       ".hero-phone-front",
       { rotateY: -8, rotateZ: -6, y: 8 },

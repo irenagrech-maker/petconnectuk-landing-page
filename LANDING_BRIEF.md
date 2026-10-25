@@ -1,3 +1,15 @@
+# Aktualizacja 3 — ciepłe zdjęcia i animacja
+
+Użytkowniczka uznała wersję 2 za dużo lepszą i zleciła dalsze rozwinięcie: dodać atrakcyjną animację, nowe wygenerowane zdjęcia pokazujące dobrą relację ludzi ze zwierzętami (w szczególności wspólny spacer kilku osób z psami) oraz dopracować angielskie podglądy na podstawie kompletu przesłanych screenów. Pozwoliła na wymyślone angielskie treści i podmianę fotografii. Zachowujemy czytelny układ v2, Satoshi, paletę aplikacji oraz nazwę PetConnect bez kropki.
+
+Decyzja wykonawcza: dwa spójne obrazy — spacer znajomych z psami w parku oraz spokojna scena domowa z człowiekiem, kotem i psem. Fotografia spaceru tworzy osobny spokojny rozdział po produktowym hero i wraca jako przykładowy post, łącząc relację z funkcją aplikacji. Ruch: otwarcie grupy telefonów, subtelne odsłonięcie i reframing fotografii, rysowana ścieżka między krokami desktop oraz zachowana przestrzenna prezentacja. Bez animowania tekstu podczas czytania i bez długiego sticky.
+
+Przesłane screeny są referencją struktury i stylu UI: feed, powiadomienia, edukacja, ustawienia, znajomi, wiadomości, profil, mapa. Prawdziwe nazwy, wiadomości i profile nie są kopiowane do publicznego podglądu. Angielskie przykłady i wygenerowane zdjęcia pozostają jawnie ilustracyjne. Zdjęcie wspólnego spaceru nie jest obietnicą wdrożonego organizowania spacerów; marketplace nadal niewdrożony, EN w przygotowaniu, PL dostępne.
+
+Źródła nowych obrazów i prompty: public/assets/GENERATED_IMAGES.md. Oryginały generatora pozostają w katalogu środowiska; do strony trafiają zoptymalizowane WebP.
+
+---
+
 # Aktualny kierunek — wersja 2 po uwagach użytkowniczki
 
 Dodatkowe wiążące doprecyzowanie użytkowniczki: zachować styl czcionki i zapis nazwy **PetConnect bez kropki**. Używany jest istniejący krój Satoshi z aplikacji; kropkę usunięto z samego oznaczenia marki.

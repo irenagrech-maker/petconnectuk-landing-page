@@ -1,3 +1,17 @@
+# Aktualizacja 3 — realizacja relacji, nie zmiana zaakceptowanej czytelności
+
+Wersja 2 pozostaje bazą po pozytywnym feedbacku. Nowy zakres użytkowniczki: ciepłe generowane fotografie, ciekawszy ruch i angielskie przykłady na podstawie rzeczywistego UI. Typografia, kolory, zapis marki i sekcyjne menu pozostają wiążące.
+
+Alternatywy: (1) wymienić wyłącznie zdjęcie przy firmach — zbyt mała zmiana; (2) zastąpić hero fotografią — naruszałoby poprawioną czytelność; (3) zachować hero produktu i dodać jeden mocny rozdział relacji, którego zdjęcie wraca w podglądzie społeczności. Wybrano 3.
+
+Score: telefony wchodzą jako grupa w 0,8 s, przy stale widocznym nagłówku i CTA. Rozdział community odsłania szeroki kadr spaceru przez niewielką zmianę maski, z równoczesnym spokojnym przesunięciem zdjęcia. Przy naturalnym scrollu między krokami desktop rysuje się linia wskazująca kolejność pobranie → profil → społeczność; mobile zachowuje pionowe, czytelne kroki bez tej linii. Telefon w demonstracji nadal prostuje się, a wybór funkcji wywołuje krótką reakcję całej bryły. Reduced motion: pełne zdjęcia i informacje, kompletna linia, bez ruchu.
+
+Własne angielskie UI ma teraz strukturę bliższą screenom: logo i ikony nagłówka, prosty feed ze zdjęciem i reakcjami, wyszukiwarka edukacji, mapa z nagłówkiem Near you i cztery pozycje dolnej nawigacji Home / Map / Education / Profile. Wymyślone posty i miejsca są podpisane jako sample content. Interakcje muszą faktycznie działać lokalnie; nie łączymy ich z produkcją.
+
+QA rozszerzenia: desktop/mobile, wszystkie panele i wyszukiwarka, like i rozwijane komentarze, filtry mapy, kontrasty i font bez zmian, kadry animacji w przód/wstecz, reduced motion, brak starych widocznych fotografii i błędów zasobów. Wykonano: 15 grup sprawdzeń w Chromium, sześć szerokości 1440/1024/768/640/390/320, brak overflow, błędów JavaScript i requestów. Maska i fotografia zmieniają się przy scrollu i wracają do tej samej macierzy; linia kroków przechodzi 0 → 1 → 0. Obejrzano kadry wejście/środek/wyjście/powrót oraz panele aplikacji. Reduced motion usuwa transformację i maskę, zachowując działanie. Dowody: artifacts/v3-qa-results.json, artifacts/v3-community-motion-*.png oraz VERIFICATION.md.
+
+---
+
 # PetConnect UK — wersja 2: czytelność i spójność z aplikacją
 
 ## Powód zmiany

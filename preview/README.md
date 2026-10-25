@@ -1,6 +1,6 @@
-# Działający podgląd internetowy — wersja 2
+# Działający podgląd internetowy — wersja 3
 
-`petconnect-preview.zip` zawiera aktualny build wersji 2 po uwagach o czytelności, z krojem Satoshi i nazwą PetConnect bez kropki: plik `index.html` w katalogu głównym i lokalny katalog `assets`. Nie wymaga budowania kodu ani połączenia z backendem.
+`petconnect-preview.zip` zawiera aktualny build wersji 3 z generowanymi fotografiami, animacją i angielskim podglądem na podstawie screenów aplikacji, z krojem Satoshi i nazwą PetConnect bez kropki: plik `index.html` w katalogu głównym i lokalny katalog `assets`. Nie wymaga budowania kodu ani połączenia z backendem.
 
 ## Najszybsze uruchomienie na Netlify
 
