@@ -1,79 +1,35 @@
-# PetConnect UK
+# PetConnect English
 
-Angielskojęzyczny landing page PetConnect, wersja 5 z autorskim efektem parowania krótkich komunikatów. Ekrany aplikacji w otwarciu, dokładna paleta marki, jeden spójny system Satoshi i widoczne korzyści. Projekt lokalny, bez publikacji i bez połączenia z backendem aplikacji.
+Angielskojęzyczny landing page PetConnect — pojedynczy plik HTML (bez build procesu, bez zależności npm).
 
-## Podgląd projektu
+## Status
 
-Zrzuty otwierają się bezpośrednio w GitHubie:
-
-- [Krótka animowana prezentacja](artifacts/v5-vapor-preview.gif)
-- [Cała strona](artifacts/v5-desktop-full.png)
-- [Pierwszy ekran](artifacts/v5-desktop-hero.png)
-- [Telefon i prezentacja aplikacji](artifacts/v3-desktop-preview.png)
-- [Wersja mobilna](artifacts/v5-mobile-390-hero.png)
-
-To obrazy gotowej strony. Animacje i interakcje działają po uruchomieniu projektu; publiczny adres strony nie został jeszcze utworzony.
-
-## Podgląd internetowy z gotowej paczki
-
-Instrukcja i gotowy build do przeciągnięcia na Netlify: [preview/README.md](preview/README.md). W tej sesji nie ma narzędzia publikacji ani własnego hostingu; sam zapis plików nie tworzy publicznego adresu.
+To **koncepcja strony**, nie gotowa angielska aplikacja. Appka jest dziś dostępna tylko po polsku (App Store/Google Play), dlatego strona nie oferuje jej pobrania — zamiast tego formularz "Notify me" (na razie wyłącznie wizualny, nic nie zapisuje — patrz niżej). Zdjęcia i filmik to przykładowa, ilustracyjna treść, nie prawdziwe dane użytkowników appki.
 
 ## Uruchomienie
 
-Node.js **22.12+** lub aktualne LTS (sprawdzone na 24.19.0), npm.
+Zwykły statyczny HTML — wystarczy otworzyć `index.html` w przeglądarce, albo wrzucić cały katalog na dowolny hosting statyczny (Netlify, Cloudflare Pages, GitHub Pages).
 
 ```bash
-cd /workspace/petconnectuk-landing-page
-npm ci
-npm run dev
+# podgląd lokalny, dowolnym serwerem statycznym, np.:
+npx serve .
 ```
-
-Po sklonowaniu w innym miejscu przejdź do własnego katalogu repozytorium. Używaj istniejącego checkoutu; nie ma potrzeby tworzenia worktree. Jeżeli port jest zajęty, można wskazać inny przez `npm run dev -- --port 5174`.
-
-```bash
-npm run check
-npm run build
-npm run preview
-```
-
-`dist/` zawiera gotową statyczną stronę. `base: './'` umożliwia późniejsze wdrożenie także pod ścieżką. Hosting, domena i publikacja pozostają do osobnego ustalenia. Nie są potrzebne zmienne środowiskowe ani klucze API.
-
-## Interaktywne komunikaty na pierwszym ekranie
-
-Autorski efekt PetConnect: litery poprzedniej frazy rozpraszają się i rozmywają, a kolejny komunikat wyłania się z lekkiej mgiełki. Mysz, dotyk i Enter/Space zmieniają jeden z czterech komunikatów. Bez automatycznej pętli; reduced motion przełącza tekst natychmiast. Zachowane Satoshi, kolory oraz stały nagłówek i statusy dostępności.
-
-Kod: `src/vapor-messages.js` i `src/vapor-messages.css`, wykorzystują istniejący GSAP. To własna implementacja, bez kodu React Bits Pro, bez klucza i bez rejestru. Zbędne zależności przygotowane wyłącznie pod Pro usunięto; strona pozostaje Vite + vanilla JS. Historyczne informacje o próbie integracji: [REACTBITS_SETUP.md](REACTBITS_SETUP.md).
-
-## Co działa
-
-- Menu sekcyjne oraz mobilne menu z obsługą Escape.
-- Szeroka scena wspólnego spaceru, odsłanianie fotografii przy scrollu i rysowana linia trzech kroków.
-- Lekkie, odwracalne zmiany perspektywy telefonów przy naturalnym przewijaniu, bez długiej sekcji sticky.
-- Interaktywne zakładki **Connect / Learn / Discover** z obsługą klawiatury, lokalnym polubieniem, komentarzem, wyszukiwarką przykładowych artykułów i filtrem mapy.
-- Oddzielny status **English: in development / Polish: available now** i prawdziwe linki sklepów.
-- Ścieżka usługodawcy ustawia odpowiedni temat kontaktu.
-- Formularz waliduje dane i przygotowuje szkic na **contact@petconnectapp.eu**. Następnie użytkownik otwiera program pocztowy, sprawdza i sam wysyła wiadomość. Strona nie wysyła jej automatycznie ani nie zapisuje danych.
-- Wariant `prefers-reduced-motion`, lokalne fonty, zoptymalizowane fotografie WebP.
-
-## Ważny status produktu
-
-Angielski podgląd jest oznaczoną **koncepcją interfejsu**, nie gotową angielską aplikacją. Treści demonstracji i mapa są przykładowe. Nie ma połączenia z produkcyjnymi profilami lub usługami UK. Dostarczone screeny polskiej aplikacji posłużyły jako referencja struktury UI. Źródłowe rozmowy i profile nie zostały opublikowane; demonstracja używa własnych przykładowych tekstów i wygenerowanych zdjęć.
-
-Marketplace nie jest wdrożony i nie jest reklamowany na stronie. Brak fikcyjnych opinii, wyników i liczników użytkowników. Nie dodano płatności, newslettera, analityki ani CRM.
-
-## Dokumentacja
-
-- [LANDING_BRIEF.md](LANDING_BRIEF.md) — fakty, decyzje z całego wywiadu, źródła, zależności.
-- [DESIGN.md](DESIGN.md) — koncepcja, storyboard, paleta, score ruchu i macierz wymagań.
-- [LANDING_PROMPT.md](LANDING_PROMPT.md) — pełny, samodzielny prompt wykonawczy.
-- [public/assets/GENERATED_IMAGES.md](public/assets/GENERATED_IMAGES.md) — pochodzenie i prompty nowych fotografii.
-- [public/assets/SOURCES.md](public/assets/SOURCES.md) — pochodzenie fotografii, logo i fontu.
-- [VERIFICATION.md](VERIFICATION.md) — wyniki rzeczywistych sprawdzeń, screenshoty i ograniczenia.
-
-Przed publiczną publikacją: ustalić hosting i domenę, potwierdzić prawa do fotografii/fontu oraz docelowe dokumenty prawne, sprawdzić dostępność sklepów dla docelowego regionu. Linki prawne prowadzą obecnie do istniejących dokumentów polskich i są tak podpisane.
 
 ## Struktura
 
-`src/main.js` — treść, demonstracja, kontakt i ruch; `src/style.css` — system wizualny i responsywność; `public/assets/` — lokalne materiały; `artifacts/` — dowody przeglądu w Chromium. Dokumentacja pozostaje po polsku, interfejs po angielsku.
+- `index.html` — cała strona (HTML + CSS + JS w jednym pliku).
+- `assets/` — logo (tło wycięte, biała łapka w środku zachowana), zdjęcie i filmik użyte na stronie.
 
-Pierwsza, odrzucona propozycja pozostaje w historii Git i w `design-history/`. Wersja 2 otrzymała pozytywny feedback; dodatki wersji 3 pozostają do oceny użytkowniczki. Dostarczona specyfikacja była materiałem referencyjnym; jej wewnętrznych danych nie dołączono do repozytorium.
+## Co już działa
+
+- Responsywny układ (header, hero, "How it works", "What you get", dwie sekcje CTA z zapisem na powiadomienie, kontakt, stopka).
+- Autorski efekt "parowania" w hero — zdania formują się i rozpuszczają falą od lewej do prawej, plus lokalna reakcja na mysz (dotknięcie tekstu kursorem rozsypuje go w tym miejscu w kolorach marki).
+- Wideo w tle sekcji "What you get" — bez dźwięku, odtwarza się raz i zatrzymuje na końcu; kliknięcie odtwarza od nowa.
+- Formularze (notify-me, kontakt) mają gotowy UI i walidację, ale **nie są jeszcze podłączone do żadnego backendu** — kliknięcie pokazuje tylko lokalny stan "sukcesu" w przeglądarce, nic nie jest zapisywane ani wysyłane.
+
+## Do zrobienia przed publikacją
+
+- Podłączyć realne zbieranie e-maili z formularza "Notify me" (MailerLite / Tally / własna infrastruktura — decyzja otwarta, patrz `Brain/NEXT_STEPS.md` w głównym repo).
+- Podłączyć formularz kontaktowy do faktycznej wysyłki (dziś tylko UI).
+- Strony Regulaminu i Polityki Prywatności linkują na razie do polskich wersji (`petconnectapp.eu/regulamin`, `/politykaprywatnosci`) — nie ma jeszcze angielskich odpowiedników.
+- Ustalić hosting i domenę docelową.

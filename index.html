@@ -1,42 +1,913 @@
 <!doctype html>
-<html lang="en-GB">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#8B346F" />
-    <meta
-      name="description"
-      content="Meet PetConnect: a community for pet people, everyday knowledge and places to discover. Our English version is in development. Already available in Polish."
-    />
-    <meta
-      property="og:title"
-      content="PetConnect — Your place for pets and pet people."
-    />
-    <meta
-      property="og:description"
-      content="Connect with pet owners, explore pet-care knowledge and discover places and services. English version in development."
-    />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="/assets/petconnect-mark.svg" />
-    <link
-      rel="preload"
-      href="/assets/Satoshi-Variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <title>PetConnect — Your place for pets and pet people.</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <noscript
-      ><p class="noscript">
-        PetConnect’s English version is in development. The Polish app is
-        available now. Contact
-        <a href="mailto:contact@petconnectapp.eu">contact@petconnectapp.eu</a>.
-        Please enable JavaScript to explore this interactive page.
-      </p></noscript
-    >
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PetConnect English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  /* Layout: mostly white/neutral with the brand gradient used sparingly as accent (header hairline, buttons, one photo-backed band) instead of full-bleed color */
+  :root{
+    --accent-1:#df0d54;
+    --accent-2:#781566;
+    --accent-solid:#a12a70;
+    --ink:#1c1420;
+    --ink-soft:#5f5363;
+    --paper:#ffffff;
+    --tint:#fbf2f6;
+    --tint-2:#f6e9f1;
+    --line:#ecdde6;
+    color-scheme:light;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:"Montserrat",-apple-system,sans-serif;
+    font-weight:800;
+    text-wrap:balance;
+    margin:0;
+  }
+  a{color:inherit}
+  img{max-width:100%}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding-left:max(16px, env(safe-area-inset-left,0px));
+    padding-right:max(16px, env(safe-area-inset-right,0px));
+  }
+
+  /* ---------- paw motif ---------- */
+  .paw-field{
+    position:absolute; inset:0; overflow:hidden; pointer-events:none;
+  }
+  .paw-field svg{position:absolute; opacity:.1}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,255,255,.9);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 0 0 rgba(0,0,0,0);
+  }
+  header::after{
+    content:"";
+    display:block; height:3px;
+    background:linear-gradient(100deg,var(--accent-1),var(--accent-2));
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between; gap:24px;
+    padding-block:14px;
+  }
+  .wordmark{
+    font-family:"Montserrat",sans-serif; font-weight:800; font-size:20px;
+    color:var(--ink); letter-spacing:.2px; text-decoration:none;
+    display:flex; align-items:center; gap:9px;
+  }
+  .wordmark img{width:26px;height:26px;flex:none; object-fit:contain}
+  nav{display:flex; gap:28px; flex-wrap:wrap}
+  nav a{
+    color:var(--ink-soft); text-decoration:none; font-size:14.5px; font-weight:600;
+  }
+  nav a:hover{color:var(--accent-solid)}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--paper);
+    padding-block:64px 80px;
+    overflow:hidden;
+  }
+  .hero .glow{
+    position:absolute; z-index:0; border-radius:50%; filter:blur(60px); opacity:.35;
+    pointer-events:none;
+  }
+  .hero .glow.g1{width:420px; height:420px; background:var(--accent-1); top:-180px; right:-120px}
+  .hero .glow.g2{width:320px; height:320px; background:var(--accent-2); bottom:-160px; left:20%; opacity:.18}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--tint);
+    border:1px solid var(--line);
+    color:var(--accent-solid);
+    font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    padding:7px 14px; border-radius:999px;
+    margin-bottom:22px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-1)}
+  .hero h1{
+    color:var(--ink); font-size:clamp(34px,5.4vw,54px); line-height:1.08;
+    max-width:14ch;
+  }
+  .hero p.lede{
+    color:var(--ink-soft); font-size:18px; max-width:52ch;
+    margin-top:22px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+    position:relative; z-index:1;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} }
+
+  .signup-card{
+    background:var(--paper);
+    border-radius:18px;
+    padding:26px;
+    border:1px solid var(--line);
+    box-shadow:0 20px 40px rgba(28,20,32,.08);
+  }
+  .signup-card h3{color:var(--ink); font-size:19px; margin-bottom:4px}
+  .signup-card .sub{color:var(--ink-soft); font-size:14.5px; margin-bottom:18px}
+  .signup-form{display:flex; gap:10px; flex-wrap:wrap}
+  .signup-form input[type=email]{
+    flex:1 1 220px; min-width:0;
+    padding:13px 16px; border-radius:999px;
+    border:1.5px solid var(--line); font-size:15px;
+    font-family:inherit; color:var(--ink);
+  }
+  .signup-form input[type=email]:focus{outline:2px solid var(--accent-solid); outline-offset:1px}
+  .btn{
+    appearance:none; border:none; cursor:pointer;
+    border-radius:999px; padding:13px 24px;
+    font-family:inherit; font-weight:700; font-size:15px;
+    background:linear-gradient(100deg,var(--accent-1),var(--accent-2));
+    color:#fff;
+    white-space:nowrap;
+  }
+  .btn:hover{filter:brightness(1.06)}
+  .btn:active{filter:brightness(.96)}
+  .fine{font-size:12.5px; color:var(--ink-soft); margin-top:12px}
+  .success{display:none; align-items:center; gap:10px; color:#1f7a4d; font-weight:700; font-size:14.5px}
+  .success svg{flex:none}
+
+  /* ---------- vapor particle stage (replaces the hero photo) ---------- */
+  .vapor-stage{
+    position:relative; max-width:440px; aspect-ratio:1/1; margin-inline:auto;
+  }
+  .vapor-stage canvas{
+    width:100%; height:100%; display:block; touch-action:none; cursor:pointer;
+  }
+  .vapor-hint{
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    margin-top:4px; font-size:11.5px; font-weight:700; color:var(--accent-solid); opacity:.75;
+  }
+  .vapor-fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:18px; margin:0;
+    font-family:"Montserrat",sans-serif; font-weight:800; font-size:clamp(22px,6vw,32px); line-height:1.25;
+    color:var(--ink);
+  }
+  .vapor-stage.ready .vapor-fallback{display:none}
+  .sr-only{
+    position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ---------- section shell ---------- */
+  section{padding-block:76px; position:relative}
+  .section-head{max-width:640px; margin-bottom:46px}
+  .kicker{
+    color:var(--accent-solid); font-weight:700; font-size:13px;
+    letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; display:block;
+  }
+  section h2{font-size:clamp(26px,3.6vw,38px); color:var(--ink)}
+  section .section-head p{color:var(--ink-soft); font-size:16.5px; margin-top:12px}
+
+  /* ---------- steps ---------- */
+  .steps{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px;
+  }
+  @media (max-width:900px){ .steps{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr} }
+  .step{
+    background:var(--tint); border-radius:16px; padding:26px 22px;
+    border:1px solid var(--line);
+    transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, border-color .28s ease, background .28s ease;
+    will-change:transform;
+  }
+  .step:hover{
+    transform:translateY(-6px) scale(1.035);
+    box-shadow:0 18px 34px rgba(28,20,32,.14);
+    border-color:var(--accent-solid);
+    background:var(--paper);
+  }
+  .step .num{
+    font-family:"Montserrat",sans-serif; font-weight:800; font-size:13px;
+    color:#fff; background:linear-gradient(100deg,var(--accent-1),var(--accent-2));
+    width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+    transition:transform .28s ease;
+  }
+  .step:hover .num{transform:scale(1.12) rotate(-6deg)}
+  .step h3{font-size:17px; color:var(--ink); margin-bottom:8px}
+  .step p{font-size:14.5px; color:var(--ink-soft); margin:0}
+  @media (prefers-reduced-motion:reduce){
+    .step, .step .num, .card{transition:none}
+    .step:hover{transform:none}
+  }
+
+  /* ---------- benefits ---------- */
+  .benefits{
+    background:var(--tint-2);
+  }
+  .cards{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:900px){ .cards{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .cards{grid-template-columns:1fr} }
+  .card{
+    background:var(--paper); border-radius:16px; padding:26px;
+    border:1px solid var(--line);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px rgba(28,20,32,.1);
+  }
+  .card .icon{
+    width:46px; height:46px; border-radius:12px;
+    background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px;
+  }
+  .card h3{font-size:16.5px; color:var(--ink); margin-bottom:8px}
+  .card p{font-size:14.5px; color:var(--ink-soft); margin:0}
+
+  /* ---------- photo strip ---------- */
+  .photo-strip{
+    position:relative; border-radius:20px; overflow:hidden;
+    aspect-ratio:21/8; margin-bottom:44px;
+  }
+  .photo-strip img, .photo-strip video{width:100%; height:100%; object-fit:cover; display:block}
+  .photo-strip video{cursor:pointer}
+  .photo-strip .cap{
+    position:absolute; left:22px; bottom:18px;
+    background:rgba(28,20,32,.55); backdrop-filter:blur(3px);
+    color:#fff; font-size:13.5px; font-weight:600;
+    padding:8px 14px; border-radius:999px;
+  }
+  @media (max-width:640px){ .photo-strip{aspect-ratio:4/5} }
+
+  /* ---------- second cta band ---------- */
+  .cta-band{
+    position:relative; text-align:center; color:#fff;
+    background:#2a1b26;
+  }
+  .cta-band .bg{
+    position:absolute; inset:0; z-index:0;
+  }
+  .cta-band .bg img{width:100%; height:100%; object-fit:cover; display:block}
+  .cta-band .bg::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(31,15,28,.55), rgba(31,15,28,.82)),
+               linear-gradient(100deg, rgba(223,13,84,.45), rgba(120,21,102,.55));
+  }
+  .cta-band .wrap{position:relative; z-index:1}
+  .cta-band .section-head{margin-inline:auto; text-align:center}
+  .cta-band h2{color:#fff}
+  .cta-band .kicker{color:#ffd9e8}
+  .cta-band .section-head p{color:rgba(255,255,255,.9)}
+  .cta-band .signup-card{max-width:520px; margin-inline:auto; text-align:left}
+
+  /* ---------- contact ---------- */
+  .contact-grid{display:grid; grid-template-columns:.9fr 1.1fr; gap:48px}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
+  form.contact{display:flex; flex-direction:column; gap:14px}
+  form.contact label{font-size:13.5px; font-weight:700; color:var(--ink)}
+  form.contact input, form.contact textarea{
+    width:100%; padding:12px 14px; border-radius:10px;
+    border:1.5px solid var(--line); font-family:inherit; font-size:15px; color:var(--ink);
+    margin-top:6px;
+  }
+  form.contact textarea{min-height:120px; resize:vertical}
+  form.contact input:focus, form.contact textarea:focus{outline:2px solid var(--accent-solid); outline-offset:1px}
+  form.contact .btn{align-self:flex-start; margin-top:4px}
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink); color:#fff;
+    padding-block:40px;
+  }
+  .footer-row{
+    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;
+  }
+  footer .wordmark{color:#fff}
+  .footer-links{display:flex; gap:22px; flex-wrap:wrap}
+  .footer-links a{font-size:13.5px; color:rgba(255,255,255,.75); text-decoration:none}
+  .footer-links a:hover{color:#fff; text-decoration:underline}
+  .footer-note{font-size:12.5px; color:rgba(255,255,255,.55); margin-top:18px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-row">
+    <a class="wordmark" href="#top">
+      <img src="assets/logo.png" alt="PetConnect logo">
+      PetConnect
+    </a>
+    <nav>
+      <a href="#how">How it works</a>
+      <a href="#benefits">What you get</a>
+      <a href="#notify">Get notified</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="glow g1" aria-hidden="true"></div>
+    <div class="glow g2" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>English edition &mdash; coming soon</span>
+        <h1>Your place for pets and friends</h1>
+        <p class="lede">PetConnect is where animal lovers connect, share experiences, and look out for their pets together.</p>
+
+        <div class="signup-card" style="margin-top:34px; max-width:480px">
+          <h3>Be the first to know</h3>
+          <div class="sub">Leave your email and we'll let you know the moment the English app is ready.</div>
+          <form class="signup-form" data-signup>
+            <input type="email" required placeholder="you@email.com" aria-label="Email address">
+            <button class="btn" type="submit">Notify me</button>
+          </form>
+          <div class="success" data-success>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            You're on the list &mdash; we'll email you when it's ready.
+          </div>
+          <div class="fine">One email, when it's ready. No spam, unsubscribe anytime.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="vapor-stage" data-vapor-stage>
+          <canvas data-vapor-canvas aria-hidden="true"></canvas>
+          <p class="vapor-fallback" data-vapor-fallback>Find trusted vets, groomers, and pet-friendly places near you.</p>
+          <p class="sr-only" data-vapor-sr>Find trusted vets, groomers, and pet-friendly places near you. Share your pet's story with people who actually get it. Learn what your pet needs, from owners who've been there. Swap, sell, and find pet gear through the marketplace.</p>
+        </div>
+        <span class="vapor-hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          Click to skip ahead
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">How it works</span>
+        <h2>We built this app out of love for animals</h2>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="num">1</div>
+          <h3>Download the app</h3>
+          <p>Get PetConnect from the App Store (iOS) or Google Play (Android) once the English edition is live.</p>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <h3>Create your profile</h3>
+          <p>Set up your account and add details about yourself and your pets.</p>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <h3>Discover and connect</h3>
+          <p>Meet other pet owners, trade experiences, and dig into the in-app education resources.</p>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <h3>Make life better for your pet</h3>
+          <p>Use everything PetConnect offers to enrich your pet's life and join a caring community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="benefits" class="benefits">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">What you get</span>
+        <h2>Want to be part of a community of animal lovers? PetConnect is for you.</h2>
+      </div>
+      <div class="photo-strip">
+        <video src="assets/community-walk.mp4" autoplay muted playsinline disablepictureinpicture aria-label="People walking a dog together. Click to replay."></video>
+        <span class="cap">Built around the bond, not just the pet</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c.8-3.6 3.3-5.6 6-5.6s5.2 2 6 5.6M14.5 20c.6-2.6 2.2-4 4-4s3.3 1.4 3.9 4"/></svg></div>
+          <h3>Meet other owners</h3>
+          <p>Connect with fellow pet owners, share experiences, and make new friends in a caring community.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 19.5V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v14"/><path d="M6 19.5h13"/><path d="M8 7h7M8 10h7"/></svg></div>
+          <h3>Learn as you go</h3>
+          <p>Our education hub keeps you up to date on the latest in pet health and care.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s-7-4.6-9.3-8.9C1 8.7 2.3 5 6 4.2c2.2-.5 4.3.4 6 2 1.7-1.6 3.8-2.5 6-2 3.7.8 5 4.5 3.3 7.9C19 16.4 12 21 12 21z"/></svg></div>
+          <h3>Find services nearby</h3>
+          <p>Use the in-app map to quickly find vets, pet shops, and other services that can help your pet.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+          <h3>Buy and sell</h3>
+          <p>Trade pet accessories and products with other users on the marketplace.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.9.3-1.3 1-1.3 1.9" /><circle cx="12" cy="16.5" r=".2" fill="#fff" stroke="#fff"/></svg></div>
+          <h3>Get real answers</h3>
+          <p>Get recommendations and advice from the community to help you care for your pet and enjoy more time together.</p>
+        </div>
+        <div class="card">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 21s-6.7-4.6-9.3-8.6C.8 9.2 1.9 5.8 5 4.9c2-.6 4 .2 5 1.9 1-1.7 3-2.5 5-1.9 3.1.9 4.2 4.3 2.3 7.5C18.7 16.4 12 21 12 21z"/></svg></div>
+          <h3>Find support and inspiration</h3>
+          <p>From practical know-how to everyday encouragement, PetConnect is there for the day-to-day of caring for your pet.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="notify" class="cta-band">
+    <div class="bg" aria-hidden="true"><img src="assets/community.jpg" alt=""></div>
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Not live in English yet</span>
+        <h2>Be the first to know when PetConnect speaks your language</h2>
+        <p>We're preparing the English edition now. Leave your email below and we'll send you one message &mdash; the day it's ready to download.</p>
+      </div>
+      <div class="signup-card">
+        <form class="signup-form" data-signup>
+          <input type="email" required placeholder="you@email.com" aria-label="Email address">
+          <button class="btn" type="submit">Notify me</button>
+        </form>
+        <div class="success" data-success>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          You're on the list &mdash; we'll email you when it's ready.
+        </div>
+        <div class="fine">One email, when it's ready. No spam, unsubscribe anytime.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <span class="kicker">Get in touch</span>
+        <h2>Questions, feedback, or a partnership idea?</h2>
+        <p style="color:var(--ink-soft); margin-top:14px">Send us a message below and we'll get back to you.</p>
+      </div>
+      <form class="contact" data-contact>
+        <div>
+          <label for="name">Name</label>
+          <input id="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button class="btn" type="submit">Send</button>
+        <div class="success" data-success style="margin-top:4px">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Thanks &mdash; your message is in.
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-row">
+      <a class="wordmark" href="#top">
+        <img src="assets/logo.png" alt="PetConnect logo">
+        PetConnect
+      </a>
+      <div class="footer-links">
+        <a href="https://petconnectapp.eu/regulamin" target="_blank" rel="noopener">Terms of Service</a>
+        <a href="https://petconnectapp.eu/politykaprywatnosci" target="_blank" rel="noopener">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-note">Live today in Poland, in Polish. The English edition is on its way &mdash; &copy; 2026 PetConnectapp Ltd.</div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    try {
+      var stage = document.querySelector('[data-vapor-stage]');
+      var canvas = document.querySelector('[data-vapor-canvas]');
+      var fallback = document.querySelector('[data-vapor-fallback]');
+      if (!stage || !canvas) return;
+      var srNode = stage.querySelector('[data-vapor-sr]');
+      var ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      var PHRASES = [
+        "Find trusted vets, groomers, and pet-friendly places near you.",
+        "Share your pet's story with people who actually get it.",
+        "Learn what your pet needs, from owners who've been there.",
+        "Swap, sell, and find pet gear through the marketplace."
+      ];
+      var INK = [28, 20, 32];
+      var TINTS = [[223, 13, 84], [120, 21, 102]];
+
+      var FORM_MS = 1150;
+      var HOLD_MS = 2000;
+      var DISSOLVE_MS = 1150;
+      var BAND = 0.2;
+      var LEVELS = 5;
+      var INK_STR = 'rgb(' + INK[0] + ',' + INK[1] + ',' + INK[2] + ')';
+      var MOUSE_RADIUS = 46;
+
+      var cssW = 0, cssH = 0, dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      var layout = null; // { particles, lines, fontPx, lineH, startY, minX, spanX }
+      var phraseIdx = 0;
+      var phase = 'form'; // 'form' | 'hold' | 'dissolve'
+      var phaseStart = 0;
+      var raf;
+      var firstFrameDrawn = false;
+      var mouse = { x: -9999, y: -9999, active: false };
+
+      function lerp(a, b, t){ return a + (b - a) * t; }
+      function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+      function smooth(edge0, edge1, v){
+        var t = clamp01((v - edge0) / (edge1 - edge0));
+        return t * t * (3 - 2 * t);
+      }
+      function colorFor(tint, mix){
+        return 'rgb(' + Math.round(lerp(INK[0], tint[0], mix)) + ',' +
+                         Math.round(lerp(INK[1], tint[1], mix)) + ',' +
+                         Math.round(lerp(INK[2], tint[2], mix)) + ')';
+      }
+      // precomputed color + alpha per [tintIndex][level] bucket, so the render
+      // loop sets fillStyle once per bucket instead of once per particle
+      var TINT_LIST = [INK, TINTS[0], TINTS[1]];
+      var BUCKET_COLOR = TINT_LIST.map(function(tint){
+        var row = [];
+        for (var i = 0; i < LEVELS; i++) row.push(colorFor(tint, i / (LEVELS - 1)));
+        return row;
+      });
+      var BUCKET_ALPHA = (function(){
+        var row = [];
+        for (var i = 0; i < LEVELS; i++) row.push(lerp(1, 0.18, i / (LEVELS - 1)));
+        return row;
+      })();
+
+      function wrapLines(text, fontPx, maxWidth){
+        ctx.font = '800 ' + fontPx + 'px Montserrat, sans-serif';
+        var words = text.split(' ');
+        var lines = [], cur = '';
+        words.forEach(function(w){
+          var test = cur ? cur + ' ' + w : w;
+          if (ctx.measureText(test).width > maxWidth && cur){ lines.push(cur); cur = w; }
+          else cur = test;
+        });
+        if (cur) lines.push(cur);
+        return lines;
+      }
+
+      function buildParticles(text){
+        var maxWidth = cssW * 0.84;
+        var fontPx = Math.round(cssW * 0.13);
+        var lines = [text], lineH = fontPx * 1.22;
+        while (fontPx > 16){
+          lines = wrapLines(text, fontPx, maxWidth);
+          lineH = fontPx * 1.22;
+          if (lines.length * lineH <= cssH * 0.8) break;
+          fontPx -= 2;
+        }
+        var off = document.createElement('canvas');
+        off.width = Math.max(1, Math.round(cssW * dpr));
+        off.height = Math.max(1, Math.round(cssH * dpr));
+        var octx = off.getContext('2d');
+        octx.scale(dpr, dpr);
+        octx.fillStyle = '#000';
+        octx.textAlign = 'center';
+        octx.textBaseline = 'middle';
+        octx.font = '800 ' + fontPx + 'px Montserrat, sans-serif';
+        var blockH = lines.length * lineH;
+        var startY = cssH / 2 - blockH / 2 + lineH / 2;
+        lines.forEach(function(line, i){
+          octx.fillText(line, cssW / 2, startY + i * lineH);
+        });
+
+        var minX = cssW, maxX = 0;
+        var step = 1.6, pts = [];
+        for (var attempt = 0; attempt < 5; attempt++){
+          pts = [];
+          minX = cssW; maxX = 0;
+          var data = octx.getImageData(0, 0, off.width, off.height).data;
+          var stepPx = Math.max(1, step * dpr);
+          for (var y = 0; y < off.height; y += stepPx){
+            for (var x = 0; x < off.width; x += stepPx){
+              var xi = x | 0, yi = y | 0;
+              var a = data[((yi * off.width) + xi) * 4 + 3];
+              if (a > 120){
+                var hx = xi / dpr, hy = yi / dpr;
+                pts.push({ hx: hx, hy: hy });
+                if (hx < minX) minX = hx;
+                if (hx > maxX) maxX = hx;
+              }
+            }
+          }
+          if (pts.length <= 7000 || step >= 4) break;
+          step += 0.6;
+        }
+        if (!pts.length){ minX = 0; maxX = cssW; }
+        var spanX = Math.max(1, maxX - minX);
+
+        var particles = pts.map(function(p){
+          var r = Math.random();
+          var tintIdx = r < 0.3 ? 0 : (r < 0.65 ? 1 : 2);
+          var ang = -Math.PI / 2 + (Math.random() - 0.5) * 1.5;
+          var dist = 18 + Math.random() * 40;
+          return {
+            hx: p.hx, hy: p.hy,
+            u: (p.hx - minX) / spanX,
+            driftX: Math.cos(ang) * dist,
+            driftY: Math.sin(ang) * dist,
+            jitterX: (Math.random() - 0.5) * 8,
+            jitterY: (Math.random() - 0.5) * 8,
+            phase: Math.random() * Math.PI * 2,
+            radius: 0.9 + Math.random() * 0.6,
+            tintIdx: tintIdx,
+            touched: 0
+          };
+        });
+
+        return {
+          particles: particles,
+          lines: lines, fontPx: fontPx, lineH: lineH, startY: startY,
+          minX: minX, spanX: spanX
+        };
+      }
+
+      function sizeCanvas(){
+        var rect = stage.getBoundingClientRect();
+        cssW = rect.width; cssH = rect.height;
+        if (!cssW || !cssH) return false;
+        canvas.width = Math.max(1, Math.round(cssW * dpr));
+        canvas.height = Math.max(1, Math.round(cssH * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        return true;
+      }
+
+      function setPhase(next, now){
+        phase = next;
+        phaseStart = now;
+      }
+
+      // draws the crisp, real (anti-aliased) text, clipped to an x-range
+      function drawText(x0, x1){
+        if (x1 <= x0) return;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(x0, -4, x1 - x0, cssH + 8);
+        ctx.clip();
+        ctx.fillStyle = INK_STR;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '800 ' + layout.fontPx + 'px Montserrat, sans-serif';
+        layout.lines.forEach(function(line, i){
+          ctx.fillText(line, cssW / 2, layout.startY + i * layout.lineH);
+        });
+        ctx.restore();
+      }
+
+      // draws only the particles whose u falls inside [bandLo, bandHi], batched
+      // by color bucket so fillStyle is set a handful of times, not per-dot
+      function drawBand(bandLo, bandHi, edgeLo, edgeHi, invert, now){
+        var buckets = [];
+        for (var t = 0; t < 3; t++){
+          buckets.push([]);
+          for (var l = 0; l < LEVELS; l++) buckets[t].push([]);
+        }
+        var list = layout.particles;
+        for (var i = 0; i < list.length; i++){
+          var p = list[i];
+          if (p.u < bandLo || p.u > bandHi) continue;
+          var s = smooth(edgeLo, edgeHi, p.u);
+          var reveal = invert ? s : (1 - s);
+          var dissolve = 1 - reveal;
+          if (dissolve < 0.015) continue; // essentially solid, the clipped text already covers it
+          var rx = p.hx + p.driftX * dissolve + p.jitterX * dissolve;
+          var ry = p.hy + p.driftY * dissolve + p.jitterY * dissolve;
+          var idle = Math.sin(now * 0.0015 + p.phase) * 1.1 * dissolve;
+          rx += idle; ry += idle * 0.6;
+          var level = Math.round(Math.min(1, dissolve * 1.15) * (LEVELS - 1));
+          buckets[p.tintIdx][level].push(rx, ry, p.radius);
+        }
+        for (var ti = 0; ti < 3; ti++){
+          for (var li = 0; li < LEVELS; li++){
+            var pts = buckets[ti][li];
+            if (!pts.length) continue;
+            ctx.beginPath();
+            for (var k = 0; k < pts.length; k += 3){
+              var x = pts[k], y = pts[k + 1], r = pts[k + 2];
+              ctx.moveTo(x + r, y);
+              ctx.arc(x, y, r, 0, Math.PI * 2);
+            }
+            ctx.fillStyle = BUCKET_COLOR[ti][li];
+            ctx.globalAlpha = BUCKET_ALPHA[li];
+            ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      // wherever the mouse hovers over the text, punch a soft hole in the
+      // solid letters and fill it with drifting, colored dust that eases
+      // back to solid once the mouse moves away
+      function drawMouseDust(now){
+        var list = layout.particles;
+        var buckets = [];
+        for (var t = 0; t < 3; t++){
+          buckets.push([]);
+          for (var l = 0; l < LEVELS; l++) buckets[t].push([]);
+        }
+        var any = false;
+        for (var i = 0; i < list.length; i++){
+          var p = list[i];
+          var dx = p.hx - mouse.x, dy = p.hy - mouse.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var target = (mouse.active && dist < MOUSE_RADIUS) ? (1 - dist / MOUSE_RADIUS) : 0;
+          p.touched += (target - p.touched) * (target > p.touched ? 0.3 : 0.05);
+          if (p.touched < 0.01){ p.touched = 0; continue; }
+          any = true;
+          var rx2 = p.hx + p.driftX * p.touched + p.jitterX * p.touched;
+          var ry2 = p.hy + p.driftY * p.touched + p.jitterY * p.touched;
+          var idle2 = Math.sin(now * 0.0018 + p.phase) * 1.1 * p.touched;
+          rx2 += idle2; ry2 += idle2 * 0.6;
+          var level2 = Math.round(Math.min(1, p.touched * 1.15) * (LEVELS - 1));
+          buckets[p.tintIdx][level2].push(rx2, ry2, p.radius);
+        }
+        if (mouse.active){
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-out';
+          var grad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, MOUSE_RADIUS);
+          grad.addColorStop(0, 'rgba(0,0,0,.95)');
+          grad.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(mouse.x, mouse.y, MOUSE_RADIUS, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+        if (!any) return;
+        for (var ti = 0; ti < 3; ti++){
+          for (var li = 0; li < LEVELS; li++){
+            var pts = buckets[ti][li];
+            if (!pts.length) continue;
+            ctx.beginPath();
+            for (var k = 0; k < pts.length; k += 3){
+              var x = pts[k], y = pts[k + 1], r = pts[k + 2];
+              ctx.moveTo(x + r, y);
+              ctx.arc(x, y, r, 0, Math.PI * 2);
+            }
+            ctx.fillStyle = BUCKET_COLOR[ti][li];
+            ctx.globalAlpha = BUCKET_ALPHA[li];
+            ctx.fill();
+          }
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      function frame(now){
+        if (!layout){ raf = requestAnimationFrame(frame); return; }
+        ctx.clearRect(0, 0, cssW, cssH);
+
+        var elapsed = now - phaseStart;
+
+        if (phase === 'form'){
+          var t = clamp01(elapsed / FORM_MS);
+          var frontU = -BAND + t * (1 + BAND * 2);
+          var cutLeft = layout.minX + (frontU - BAND) * layout.spanX;
+          drawText(-8, cutLeft);
+          drawBand(frontU - BAND, frontU + BAND, frontU - BAND, frontU + BAND, false, now);
+          if (t >= 1) setPhase('hold', now);
+        } else if (phase === 'hold'){
+          drawText(-8, cssW + 8);
+          if (elapsed >= HOLD_MS) setPhase('dissolve', now);
+        } else {
+          var td = clamp01(elapsed / DISSOLVE_MS);
+          var frontD = -BAND + td * (1 + BAND * 2);
+          var cutRight = layout.minX + (frontD + BAND) * layout.spanX;
+          drawText(cutRight, cssW + 8);
+          drawBand(frontD - BAND, frontD + BAND, frontD - BAND, frontD + BAND, true, now);
+          if (td >= 1){
+            phraseIdx = (phraseIdx + 1) % PHRASES.length;
+            if (srNode) srNode.textContent = PHRASES[phraseIdx];
+            layout = buildParticles(PHRASES[phraseIdx]);
+            setPhase('form', now);
+          }
+        }
+
+        drawMouseDust(now);
+
+        if (!firstFrameDrawn){
+          firstFrameDrawn = true;
+          stage.classList.add('ready');
+        }
+        raf = requestAnimationFrame(frame);
+      }
+
+      function pointerPos(evt){
+        var rect = canvas.getBoundingClientRect();
+        var t = evt.touches && evt.touches[0];
+        var cx = (t ? t.clientX : evt.clientX) - rect.left;
+        var cy = (t ? t.clientY : evt.clientY) - rect.top;
+        return { x: cx, y: cy };
+      }
+      canvas.addEventListener('mousemove', function(e){
+        var pos = pointerPos(e);
+        mouse.x = pos.x; mouse.y = pos.y; mouse.active = true;
+      });
+      canvas.addEventListener('mouseleave', function(){ mouse.active = false; });
+      canvas.addEventListener('touchmove', function(e){
+        var pos = pointerPos(e);
+        mouse.x = pos.x; mouse.y = pos.y; mouse.active = true;
+      }, { passive: true });
+      canvas.addEventListener('touchend', function(){ mouse.active = false; });
+
+      canvas.addEventListener('click', function(){
+        if (phase === 'hold') setPhase('dissolve', performance.now());
+      });
+
+      function init(){
+        if (!sizeCanvas()) return;
+        layout = buildParticles(PHRASES[phraseIdx]);
+        if (srNode) srNode.textContent = PHRASES[phraseIdx];
+        setPhase('form', performance.now());
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(frame);
+      }
+
+      var resizeTimer;
+      window.addEventListener('resize', function(){
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(init, 200);
+      });
+
+      var FONT_WAIT_MS = 1200;
+      var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      var timeout = new Promise(function(res){ setTimeout(res, FONT_WAIT_MS); });
+      Promise.race([fontsReady, timeout]).then(init).catch(init);
+    } catch (err) {
+      // canvas failed for any reason: the static fallback text in the markup stays visible
+    }
+  })();
+
+  (function(){
+    var video = document.querySelector('.photo-strip video');
+    if (!video) return;
+    video.addEventListener('ended', function(){
+      video.pause();
+      video.currentTime = video.duration;
+    });
+    video.addEventListener('click', function(){
+      if (video.ended || video.paused){
+        video.currentTime = 0;
+        video.play();
+      }
+    });
+  })();
+
+  document.querySelectorAll('[data-signup]').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var card = form.closest('.signup-card');
+      var success = card.querySelector('[data-success]');
+      form.style.display = 'none';
+      success.style.display = 'flex';
+    });
+  });
+  var contactForm = document.querySelector('[data-contact]');
+  if (contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      contactForm.querySelectorAll('input, textarea, button[type=submit]').forEach(function(el){ el.style.display = 'none'; });
+      contactForm.querySelectorAll('label').forEach(function(el){ el.parentElement.style.display = 'none'; });
+      contactForm.querySelector('[data-success]').style.display = 'flex';
+    });
+  }
+</script>
+
+</body>
 </html>
