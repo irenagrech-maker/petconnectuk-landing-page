@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "screen surface remains untransformed during response",
+    "whole device response inspected during and after",
+    "all three modes and local actions",
+    "production hero and full-page screenshots",
+    "mobile tab orientation and overflow",
+    "enabling reduced motion immediately clears in-flight response",
+    "reduced-motion interaction works"
+  ],
+  "errors": []
+}

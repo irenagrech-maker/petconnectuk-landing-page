@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "served": "Vite production preview",
+  "checks": [
+    "build loads without errors",
+    "all three demo modes",
+    "mobile horizontal and desktop vertical tab semantics",
+    "horizontal keyboard navigation",
+    "390 and 320 pixel overflow checks",
+    "final hero and full-page screenshots"
+  ],
+  "errors": []
+}
