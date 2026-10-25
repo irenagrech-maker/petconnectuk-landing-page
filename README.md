@@ -13,6 +13,10 @@ Zrzuty otwierają się bezpośrednio w GitHubie:
 
 To obrazy gotowej strony. Animacje i interakcje działają po uruchomieniu projektu; publiczny adres strony nie został jeszcze utworzony.
 
+## Podgląd internetowy z gotowej paczki
+
+Instrukcja i gotowy build do przeciągnięcia na Netlify: [preview/README.md](preview/README.md). W tej sesji nie ma narzędzia publikacji ani własnego hostingu; sam zapis plików nie tworzy publicznego adresu.
+
 ## Uruchomienie
 
 Node.js **22.12+** lub aktualne LTS (sprawdzone na 24.19.0), npm.

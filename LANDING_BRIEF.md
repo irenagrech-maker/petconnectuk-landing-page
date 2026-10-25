@@ -65,3 +65,7 @@ Proponowana obietnica: „Their world. Better connected.” Aplikacja łączy sp
 ## Dostawa i ograniczenia
 
 Materiały w repo: LANDING_BRIEF.md, DESIGN.md, LANDING_PROMPT.md, README.md, kod i zoptymalizowane zasoby. Dokumentacja QA po rzeczywistych testach. Do implementacji używamy istniejącego checkoutu — nie tworzymy worktree. Bez publikacji witryny, zmian aplikacji mobilnej, backendu, płatności, newslettera lub analityki. Następne działania biznesowe: opcjonalnie dosłać screeny; przed publikacją potwierdzić prawa do materiałów, regiony sklepów, docelowe dokumenty prawne i hosting. Brak otwartych decyzji projektowych; zależności nie oznaczają zrealizowanych integracji.
+
+## Aktualizacja zakresu po realizacji
+
+Po problemie z otwieraniem lokalnych linków kod i podglądy zapisano na GitHubie. Następnie użytkowniczka poprosiła o działający podgląd na hostingu asystenta. Zgoda na tymczasowe udostępnienie strony została więc udzielona; produkcyjna domena i docelowy hosting nadal nie są ustalone. W tej sesji nie ma własnego hostingu, narzędzia publikacji ani dostępnego uwierzytelnienia do dostawcy. Sprawdzenie tymczasowego tunelu Cloudflare zakończyło się blokadą proxy 403. Przygotowano i sprawdzono gotowy build ZIP oraz konfigurację Netlify. Publikacja nie została wykonana; wymaga działania właścicielki na koncie hostingowym.
