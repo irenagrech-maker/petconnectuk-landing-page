@@ -1,4 +1,4 @@
-# PetConnect UK — pełne zlecenie wykonawcze, wersja 3
+# PetConnect UK — pełne zlecenie wykonawcze, wersja 5
 
 ## Mandat
 
@@ -63,3 +63,11 @@ Obejrzyj nowy opening oraz pełną stronę na 1440×1000 i 390×844, sprawdź ta
 Użyj każdej zakładki, zapisu, rozwijanego opisu, filtrów i klawiatury. Przetestuj kontakt z pustymi danymi i poprawną treścią, temat biznesowy oraz kodowanie mailto. Nie wysyłaj wiadomości. Sprawdź konsolę, obrazy i fonty, menu, overflow, reduced motion i odwracalne zmiany perspektywy. Obejrzyj kadry zamiast opisywać efekt tylko na podstawie kodu.
 
 Wyniki poprzednich iteracji nie liczą się automatycznie jako wyniki v3. Sprawdź dodatkowo wyszukiwarkę (dopasowanie, brak wyników, wyczyszczenie), komentarz, nowe zasoby, cztery pozycje nawigacji i nowy ruch zdjęcia oraz linii w przód i wstecz. Popraw nowe problemy i zapisz odrębny raport oraz screenshoty z prefiksem v3. Zaktualizuj gotową paczkę preview po buildzie. Dostarcz linki do obrazów w GitHubie oraz instrukcję do paczki. Wersja 2 została oceniona pozytywnie; nowe dodatki wersji 3 pozostają do oceny użytkowniczki.
+
+## Autorski efekt komunikatów — bieżące rozszerzenie
+
+Na wyraźne zlecenie użytkowniczki zbuduj własny efekt słów kondensujących z mgiełki, bez użycia niedostępnego kodu React Bits Pro. Umieść go pod stałym h1 jako krótki interaktywny wiersz w Satoshi, #A12A70. Teksty: Meet fellow pet people. / Share happy moments. / Learn about pet care. / Discover places nearby. Zachowaj statyczne wyjaśnienie oferty i czytelny status EN/PL.
+
+Mysz, dotyk i Enter/Space wyzwalają pojedynczą zmianę: litery poprzedniego tekstu dryfują w górę i na boki, rozmywają się i znikają, w delikatnej plumowej smudze kondensują kolejne litery, a wynik pozostaje ostry do następnego gestu. Bez pętli automatycznej i podwójnej zmiany po hover+click. Zarezerwuj miejsce, by tekst nie przesuwał przycisków. Wyjaśnij gest drobnym podpisem i strzałką. Przy reduced motion zamieniaj treść natychmiast i zatrzymuj także trwającą sekwencję; dostępny żywy komunikat przekazuje aktualną treść czytnikom.
+
+Użyj istniejącego GSAP i vanilla JS; nie ma potrzeby dodatkowego runtime React ani Tailwind. Przejrzyj realne kadry animacji desktop/mobile i zbadaj wszystkie sposoby aktywacji, szybkie powtórzenia, zawijanie i stabilność wysokości. Zaktualizuj screenshoty oraz paczkę ZIP. Historyczna blokada komponentu Pro nie blokuje tej nowej, autorskiej realizacji.

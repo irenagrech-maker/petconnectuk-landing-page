@@ -1,3 +1,15 @@
+# Aktualizacja 5 — słowa wyłaniające się z mgiełki
+
+Rozważono pełną animację h1, osobny duży blok i pojedynczy interaktywny wiersz pod h1. Wybrano wiersz: zachowuje zaakceptowaną hierarchię, a odbiorca odkrywa konkretne możliwości aplikacji. Nie animujemy informacji o dostępności ani pobrania. Statyczny opis nadal wyjaśnia zakres bez wymagania interakcji.
+
+Komunikaty: Meet fellow pet people. / Share happy moments. / Learn about pet care. / Discover places nearby. Jeden wiersz Satoshi semibold w #A12A70, strzałka sugerująca następną treść i mała instrukcja Hover or tap to explore. Obszar tekstu ma stałą wysokość w danym układzie; słowa nie dzielą się wewnątrz i nie zmieniają położenia CTA.
+
+Score: wejście myszą lub aktywacja przyciskiem → krótki rozrzut liter w górę i na boki, rozmycie i zanik → niskokontrastowa smuga w kolorze marki → następne litery kondensują do ostrego tekstu → bezruch do kolejnego gestu. Całość około 1,3 s. Brak pętli i autonomicznej zmiany podczas czytania; kolejne zdarzenia w trakcie sekwencji są ignorowane. Hover oraz następujący klik nie powodują podwójnej zmiany. Dotyk i Enter/Space wykonują jedną zmianę. Reduced motion przełącza natychmiast; zmiana preferencji podczas trwania efektu kończy go w czytelnym stanie.
+
+Autorski moduł JS + GSAP, bez płótna i WebGL. Dostępna nazwa przycisku i osobny żywy komunikat dla czytników; animowane litery ukryte semantycznie. Satoshi, paleta, statusy i reszta strony pozostają wiążące. QA (wykonano, wyniki w VERIFICATION.md i artifacts/v5-vapor-qa-results.json): wszystkie cztery treści, mysz/touch/klawiatura, szybkie gesty, stabilne wymiary, preferencje ruchu w trakcie, 320/390/640/768/1024/1440 px, kadry przed/w trakcie/po i zapis animacji.
+
+---
+
 # Aktualizacja 3 — realizacja relacji, nie zmiana zaakceptowanej czytelności
 
 Wersja 2 pozostaje bazą po pozytywnym feedbacku. Nowy zakres użytkowniczki: ciepłe generowane fotografie, ciekawszy ruch i angielskie przykłady na podstawie rzeczywistego UI. Typografia, kolory, zapis marki i sekcyjne menu pozostają wiążące.

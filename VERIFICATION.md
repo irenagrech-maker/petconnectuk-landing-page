@@ -1,3 +1,25 @@
+# Wersja 5 — autorski efekt parowania tekstu
+
+Na prośbę użytkowniczki wykonano niezależną animację czterech komunikatów hero, z wykorzystaniem istniejącego GSAP. Nie pobrano ani nie skopiowano kodu React Bits Pro. React/Tailwind i konfigurację z poprzedniego przygotowania usunięto jako zbędne. Brak klucza licencji nie blokuje własnego efektu.
+
+`npm run check` obejmuje oba moduły JS; build produkcyjny przechodzi. JavaScript 146,17 kB / 54,65 kB gzip; CSS 33,81 kB / 7,63 kB gzip. Różnica względem v3: około 0,89 kB gzip JS i 0,40 kB gzip CSS, bez nowych zależności runtime. To rozmiary bundlera, nie wynik pomiaru wydajności urządzenia.
+
+Osiem grup rzeczywistych sprawdzeń w Chromium: [v5-vapor-qa-results.json](artifacts/v5-vapor-qa-results.json).
+
+- Hover uruchamia rozmycie i dryf liter. Następujący klik nie pomija kolejnego hasła. Przechwycono [zanikanie](artifacts/v5-vapor-dissolve.png) i [nową czytelną frazę](artifacts/v5-vapor-condensed.png); sprawdzono też bieżące filtry i transformacje liter.
+- Enter i Space przechodzą przez wszystkie cztery komunikaty i zawijają do pierwszego. Powtórzenia w trakcie przejścia nie tworzą kolejki ani nie pomijają treści.
+- CTA i stały h1 zachowują pozycję/treść. Dla 1440, 1024, 768, 640, 390 i 320 px sprawdzono prostokąty każdego słowa w każdym komunikacie: brak ucięć, overflow i przesunięć przycisków.
+- Zachowane Satoshi i #A12A70. Nazwa marki i status EN/PL pozostają bez zmian.
+- Ograniczony ruch zatrzymuje trwającą animację w ostrym stanie, kolejne aktywacje zmieniają tekst od razu. Nazwany natywny przycisk, focus i wskazówka; aktualna treść przekazywana przez osobny status aria-live. Animowane litery są aria-hidden. Nie wykonano testu z fizycznym czytnikiem ekranu.
+- W kontekście mobile z hasTouch sprawdzono dwa rzeczywiste gesty tap: jeden komunikat na gest. Treść nie zmienia się sama po zakończeniu animacji.
+- W pełnym przebiegu zero błędów JavaScript i nieudanych requestów. Sprawdzenia przeglądarkowe są emulacją Chromium; nie są testem fizycznego telefonu ani natywnego Safari.
+
+Dodatkowe kontrole istniejących funkcji: [v5-regression-smoke.json](artifacts/v5-regression-smoke.json) — menu mobile/Escape, trzy panele aplikacji, wyszukiwarka, mapa, polubienie, temat biznesowy i walidacja pustego kontaktu. Nic nie wysłano.
+
+[Animowany fragment](artifacts/v5-vapor-preview.gif) pokazuje kolejne komunikaty w czasie; nie jest pomiarem FPS. [Hero](artifacts/v5-desktop-hero.png), [cała strona](artifacts/v5-desktop-full.png), [telefon 390 px](artifacts/v5-mobile-390-hero.png), [telefon 320 px](artifacts/v5-mobile-320-hero.png). Kadry obejrzano; screenshoty dostawy wykonano z pustym kontaktem i bez testowego focusu. Zaktualizowana paczka ZIP zawiera bieżący build, nie publiczny hosting.
+
+---
+
 # Wersja 3 — ciepłe fotografie, ruch i podglądy aplikacji
 
 Wprowadzono dwie wygenerowane sceny: wspólny spacer trojga znajomych z psami oraz spokojną relację kobiety z kotem i psem. Zaktualizowano też oba obrazy telefonów w hero. Pochodzenie w [GENERATED_IMAGES.md](public/assets/GENERATED_IMAGES.md). Dostarczone screeny są referencją układu; prawdziwych rozmów i danych profili nie opublikowano.

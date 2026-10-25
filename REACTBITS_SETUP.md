@@ -1,3 +1,9 @@
+# Archiwum próby instalacji React Bits Pro
+
+**Bieżący stan:** użytkowniczka zleciła autorską realizację zamiast niedostępnego komponentu Pro. Efekt jest napisany niezależnie w `src/vapor-messages.js` oraz `src/vapor-messages.css`, korzysta z istniejącego GSAP i nie wymaga klucza. Nie użyto kodu Pro. Przygotowane wyłącznie pod instalację React, Tailwind, TypeScript i ich konfigurację usunięto. Poniższy zapis dotyczy wcześniejszej próby i nie jest już blokadą strony.
+
+---
+
 # Vapor Type — przygotowanie integracji
 
 Status: przygotowano React, React DOM, TypeScript/TSX, alias `@/`, plugin React zgodny z Vite 7 oraz Tailwind 4. Komponent **nie został pobrany ani zamontowany**. Obecny wygląd strony jest zachowany. `src/reactbits.css` czeka na import przy integracji; nie ładuje globalnego resetu Tailwind.

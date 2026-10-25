@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "checks": [
+    "mobile menu and Escape",
+    "all three app panels, search, map and like",
+    "business topic and empty form validation"
+  ],
+  "emailSent": false
+}

@@ -1,3 +1,11 @@
+# Aktualizacja 5 — autorski efekt parowania komunikatów
+
+Użytkowniczka zleciła własny odpowiednik efektu po niedostępnej instalacji React Bits Pro: „ok a mozesz sam cos takiego zrobic?”. To jawna zgoda na autorską realizację, bez zależności od komponentu Pro, rejestru i licencji. Nie używamy kodu React Bits Pro ani jego nazwy jako oznaczenia własnego komponentu.
+
+Realizacja: cztery krótkie angielskie komunikaty w hero, zmieniane myszą, dotykiem i klawiaturą. Litery rozpraszają się w lekką smugę, kolejny tekst wyłania się i pozostaje czytelny. Stały h1, Satoshi, #A12A70 i status EN/PL pozostają. Brak automatycznej pętli; reduced motion zmienia tekst natychmiast. Istniejący GSAP i vanilla JS wystarczają; zbędne przygotowanie React/Tailwind z poprzedniej iteracji zostaje wycofane. Reszta strony bez zmian zakresu.
+
+---
+
 # Aktualizacja 4 — zlecony Vapor Type, instalacja oczekuje na dostęp
 
 Użytkowniczka wskazała konkretny komponent React Bits Pro `@reactbits-starter/vapor-type-tw` i `<VaporType />`. Chce krótkie czytelne komunikaty o aplikacji na pierwszym ekranie, zmieniające się po wejściu myszą. Przewidziano również kliknięcie, dotyk i klawiaturę; zachowujemy Satoshi, paletę i czytelny stały nagłówek. Nie zastępujemy wskazanego komponentu autorską imitacją.

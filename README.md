@@ -1,16 +1,16 @@
 # PetConnect UK
 
-Angielskojęzyczny landing page PetConnect, wersja 3 z ciepłymi generowanymi zdjęciami i rozwiniętą animacją. Ekrany aplikacji w otwarciu, dokładna paleta marki, jeden spójny system Satoshi i widoczne korzyści. Projekt lokalny, bez publikacji i bez połączenia z backendem aplikacji.
+Angielskojęzyczny landing page PetConnect, wersja 5 z autorskim efektem parowania krótkich komunikatów. Ekrany aplikacji w otwarciu, dokładna paleta marki, jeden spójny system Satoshi i widoczne korzyści. Projekt lokalny, bez publikacji i bez połączenia z backendem aplikacji.
 
 ## Podgląd projektu
 
 Zrzuty otwierają się bezpośrednio w GitHubie:
 
-- [Krótka animowana prezentacja](artifacts/v3-motion-preview.gif)
-- [Cała strona](artifacts/v3-desktop-full.png)
-- [Pierwszy ekran](artifacts/v3-desktop-hero.png)
+- [Krótka animowana prezentacja](artifacts/v5-vapor-preview.gif)
+- [Cała strona](artifacts/v5-desktop-full.png)
+- [Pierwszy ekran](artifacts/v5-desktop-hero.png)
 - [Telefon i prezentacja aplikacji](artifacts/v3-desktop-preview.png)
-- [Wersja mobilna](artifacts/v3-mobile-390-hero.png)
+- [Wersja mobilna](artifacts/v5-mobile-390-hero.png)
 
 To obrazy gotowej strony. Animacje i interakcje działają po uruchomieniu projektu; publiczny adres strony nie został jeszcze utworzony.
 
@@ -38,9 +38,11 @@ npm run preview
 
 `dist/` zawiera gotową statyczną stronę. `base: './'` umożliwia późniejsze wdrożenie także pod ścieżką. Hosting, domena i publikacja pozostają do osobnego ustalenia. Nie są potrzebne zmienne środowiskowe ani klucze API.
 
-## Przygotowanie Vapor Type
+## Interaktywne komunikaty na pierwszym ekranie
 
-Na prośbę użytkowniczki dodano obsługę React/TSX i Tailwind pod komponent React Bits Pro. **Vapor Type nie został jeszcze pobrany ani zamontowany**: brak klucza w środowisku i dostępu do dokumentacji/rejestru. Bieżący wygląd strony pozostaje bez zmian. Szczegóły: [REACTBITS_SETUP.md](REACTBITS_SETUP.md).
+Autorski efekt PetConnect: litery poprzedniej frazy rozpraszają się i rozmywają, a kolejny komunikat wyłania się z lekkiej mgiełki. Mysz, dotyk i Enter/Space zmieniają jeden z czterech komunikatów. Bez automatycznej pętli; reduced motion przełącza tekst natychmiast. Zachowane Satoshi, kolory oraz stały nagłówek i statusy dostępności.
+
+Kod: `src/vapor-messages.js` i `src/vapor-messages.css`, wykorzystują istniejący GSAP. To własna implementacja, bez kodu React Bits Pro, bez klucza i bez rejestru. Zbędne zależności przygotowane wyłącznie pod Pro usunięto; strona pozostaje Vite + vanilla JS. Historyczne informacje o próbie integracji: [REACTBITS_SETUP.md](REACTBITS_SETUP.md).
 
 ## Co działa
 

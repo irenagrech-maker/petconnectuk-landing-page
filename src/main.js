@@ -1,6 +1,8 @@
 import "./style.css";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { initVaporMessages } from "./vapor-messages.js";
+import "./vapor-messages.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +78,15 @@ document.querySelector("#app").innerHTML = `
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
         <h1 id="hero-title">Your place for pets<br><span>and pet people.</span></h1>
-        <p class="hero-description">Meet other pet owners, share your experiences and discover knowledge, places and services for life with your pets. All in one app.</p>
+        <div class="hero-messages">
+          <button class="vapor-trigger" type="button" aria-label="Show another PetConnect feature" aria-describedby="vapor-hint">
+            <span class="vapor-stage" aria-hidden="true"><span class="vapor-words">Meet fellow pet people.</span><span class="vapor-wisp"></span><span class="vapor-wisp"></span><span class="vapor-wisp"></span></span>
+            <span class="vapor-next" aria-hidden="true">${arrow}</span>
+          </button>
+          <p id="vapor-hint" class="vapor-hint">Hover or tap to explore</p>
+          <span id="vapor-message-status" class="vapor-accessible" role="status" aria-live="polite" aria-atomic="true">Meet fellow pet people.</span>
+        </div>
+        <p class="hero-description">A community for pet people, with knowledge and places to explore. All in one app.</p>
         <div class="hero-language-note"><p class="launch-note"><span class="status-dot"></span><strong>English version in development</strong></p><p>The Polish version is already available to download.</p></div>
         <div class="hero-actions"><a class="button" href="https://apps.apple.com/us/app/petconnect/id6747425787" target="_blank" rel="noopener noreferrer" aria-label="Download the Polish PetConnect app on the App Store">App Store ${upArrow}</a><a class="button button-outline" href="https://play.google.com/store/apps/details?id=com.petconnectapp.app" target="_blank" rel="noopener noreferrer" aria-label="Get the Polish PetConnect app on Google Play">Google Play ${upArrow}</a></div>
       </div>
@@ -236,6 +246,7 @@ contactForm.addEventListener("input", (event) => {
 });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+initVaporMessages(document.querySelector(".hero-messages"));
 reducedMotion.addEventListener("change", (event) => {
   if (event.matches) {
     gsap.killTweensOf(".phone-device");

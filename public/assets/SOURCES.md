@@ -32,3 +32,7 @@ Grafika mapy i proste ikony liniowe są napisane w kodzie tego projektu; znak ma
 - Pełne pochodzenie, prompty i opis technicznej kompresji: [GENERATED_IMAGES.md](GENERATED_IMAGES.md).
 - `preview-connect.png` / `preview-discover.png` przechwycono ponownie z aktualnej własnej demonstracji. Nie zawierają zdjęć ani danych rzeczywistych profili.
 - Screeny aplikacji od użytkowniczki: referencja układu nagłówka, feedu, edukacji, mapy i czterech pozycji nawigacji. Treść angielska, fotografie i przykładowa mapa są własną ilustracją; to nie jest ukończona wersja EN.
+
+## Autorska animacja tekstu
+
+`src/vapor-messages.js` / `.css`: własna implementacja PetConnect wykonana na prośbę użytkowniczki, z wykorzystaniem GSAP już obecnego w projekcie. Inspiracją jest opis słów kondensujących z mgiełki. Nie pobrano ani nie skopiowano kodu Vapor Type lub innych zasobów React Bits Pro. Efekt nie dodaje zewnętrznych requestów, obrazów ani fontów.

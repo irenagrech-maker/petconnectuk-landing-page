@@ -1,0 +1,271 @@
+{
+  "checks": [
+    {
+      "name": "Hover produces real letter blur/drift; following click does not skip a message",
+      "status": "passed"
+    },
+    {
+      "name": "Enter/Space cycle all messages without changing heading or CTA position",
+      "status": "passed"
+    },
+    {
+      "name": "Rapid repeated actions make one readable transition",
+      "status": "passed"
+    },
+    {
+      "name": "Reduced motion ends an in-flight transition and switches text immediately",
+      "status": "passed"
+    },
+    {
+      "name": "All four messages fit at six widths, correct brand font/colour and no layout shift",
+      "status": "passed"
+    },
+    {
+      "name": "Native named button, keyboard focus, hint and separate live message",
+      "status": "passed"
+    },
+    {
+      "name": "Actual emulated touch changes once per tap with no automatic loop",
+      "status": "passed"
+    },
+    {
+      "name": "No JavaScript errors or failed requests",
+      "status": "passed"
+    }
+  ],
+  "widths": [
+    {
+      "width": 1440,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    },
+    {
+      "width": 1024,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    },
+    {
+      "width": 768,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    },
+    {
+      "width": 640,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    },
+    {
+      "width": 390,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    },
+    {
+      "width": 320,
+      "textClipping": false,
+      "horizontalOverflow": false,
+      "ctaStable": true
+    }
+  ],
+  "frames": [
+    [
+      {
+        "opacity": "0.9983",
+        "filter": "blur(0.0138px)",
+        "transform": "matrix(1.0003, 0, 0, 1.0003, -0.0242, -0.0173)"
+      },
+      {
+        "opacity": "0.9956",
+        "filter": "blur(0.0356px)",
+        "transform": "matrix(1.0008, 0, 0, 1.0008, -0.0311, -0.0667)"
+      },
+      {
+        "opacity": "0.9909",
+        "filter": "blur(0.0729px)",
+        "transform": "matrix(1.0016, 0, 0, 1.0016, 0, -0.1823)"
+      },
+      {
+        "opacity": "0.9837",
+        "filter": "blur(0.1301px)",
+        "transform": "matrix(1.0029, 0, 0, 1.0029, 0.1138, -0.4065)"
+      },
+      {
+        "opacity": "0.9736",
+        "filter": "blur(0.2112px)",
+        "transform": "matrix(1.0048, 0, 0, 1.0048, 0.3697, -0.264)"
+      },
+      {
+        "opacity": "0.9599",
+        "filter": "blur(0.3206px)",
+        "transform": "matrix(1.0072, 0, 0, 1.0072, -0.5611, -0.6012)"
+      },
+      {
+        "opacity": "0.9422",
+        "filter": "blur(0.4625px)",
+        "transform": "matrix(1.0104, 0, 0, 1.0104, -0.4047, -1.1562)"
+      },
+      {
+        "opacity": "0.9199",
+        "filter": "blur(0.641px)",
+        "transform": "matrix(1.0144, 0, 0, 1.0144, 0, -2.0031)"
+      },
+      {
+        "opacity": "0.8925",
+        "filter": "blur(0.8604px)",
+        "transform": "matrix(1.0194, 0, 0, 1.0194, 0.7528, -1.0755)"
+      },
+      {
+        "opacity": "0.8594",
+        "filter": "blur(1.1249px)",
+        "transform": "matrix(1.0253, 0, 0, 1.0253, 1.9685, -2.1091)"
+      },
+      {
+        "opacity": "0.8594",
+        "filter": "blur(1.1249px)",
+        "transform": "matrix(1.0253, 0, 0, 1.0253, -1.9685, -2.8122)"
+      },
+      {
+        "opacity": "0.8925",
+        "filter": "blur(0.8604px)",
+        "transform": "matrix(1.0194, 0, 0, 1.0194, -0.7528, -2.6887)"
+      },
+      {
+        "opacity": "0.9199",
+        "filter": "blur(0.641px)",
+        "transform": "matrix(1.0144, 0, 0, 1.0144, 0, -0.8012)"
+      },
+      {
+        "opacity": "0.9422",
+        "filter": "blur(0.4625px)",
+        "transform": "matrix(1.0104, 0, 0, 1.0104, 0.4047, -0.8672)"
+      },
+      {
+        "opacity": "0.9599",
+        "filter": "blur(0.3206px)",
+        "transform": "matrix(1.0072, 0, 0, 1.0072, 0.5611, -0.8016)"
+      },
+      {
+        "opacity": "0.9736",
+        "filter": "blur(0.2112px)",
+        "transform": "matrix(1.0048, 0, 0, 1.0048, -0.3697, -0.6601)"
+      },
+      {
+        "opacity": "0.9837",
+        "filter": "blur(0.1301px)",
+        "transform": "matrix(1.0029, 0, 0, 1.0029, -0.1138, -0.1626)"
+      },
+      {
+        "opacity": "0.9909",
+        "filter": "blur(0.0729px)",
+        "transform": "matrix(1.0016, 0, 0, 1.0016, 0, -0.1367)"
+      },
+      {
+        "opacity": "0.9956",
+        "filter": "blur(0.0356px)",
+        "transform": "matrix(1.0008, 0, 0, 1.0008, 0.0311, -0.0889)"
+      },
+      {
+        "opacity": "0.9983",
+        "filter": "blur(0.0138px)",
+        "transform": "matrix(1.0003, 0, 0, 1.0003, 0.0242, -0.0432)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -8, 12)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -4, 15)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 0, 18)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 4, 21)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 8, 12)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -8, 15)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -4, 18)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 0, 21)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 4, 12)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 8, 15)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -8, 18)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -4, 21)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 0, 12)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 4, 15)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 8, 18)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -8, 21)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, -4, 12)"
+      },
+      {
+        "opacity": "0",
+        "filter": "blur(9px)",
+        "transform": "matrix(1.12, 0, 0, 1.12, 0, 15)"
+      }
+    ]
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "status": "passed"
+}
