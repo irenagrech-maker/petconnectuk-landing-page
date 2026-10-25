@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "checks": [
+    "outlined secondary store button",
+    "fresh empty form in final screenshots",
+    "six section views and whole page",
+    "equal-row mobile buttons at 640/390/320",
+    "no horizontal overflow"
+  ],
+  "narrow": [
+    {
+      "width": 640,
+      "buttonsShareRow": true,
+      "headingFirstPhraseLines": 1
+    },
+    {
+      "width": 390,
+      "buttonsShareRow": true,
+      "headingFirstPhraseLines": 1
+    },
+    {
+      "width": 320,
+      "buttonsShareRow": true,
+      "headingFirstPhraseLines": 1
+    }
+  ],
+  "errors": []
+}

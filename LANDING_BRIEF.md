@@ -1,3 +1,17 @@
+# Aktualny kierunek — wersja 2 po uwagach użytkowniczki
+
+Dodatkowe wiążące doprecyzowanie użytkowniczki: zachować styl czcionki i zapis nazwy **PetConnect bez kropki**. Używany jest istniejący krój Satoshi z aplikacji; kropkę usunięto z samego oznaczenia marki.
+
+Pierwsza propozycja została odrzucona: polska strona jest dla użytkowniczki ładniejsza i czytelniejsza; kolory powinny odpowiadać aplikacji, a typografia wymaga spójności. To najnowsze, wiążące wymagania, nadrzędne wobec wcześniejszej interpretacji artystycznej.
+
+Zmiany wykonawcze (propozycja autora, do oceny): prosty nagłówek „Your place for pets and pet people.”, ekrany aplikacji w otwarciu, kolor #A12A70 i autentyczny gradient #DF0D54 → #781566, czarny tekst / białe tło, jedna rodzina Satoshi, brak kursywy w interfejsie strony, większe opisy, równy system nagłówków. Trzy kroki i trzy korzyści są widoczne bez klikania. Dodatkowa prezentacja Connect / Learn / Discover oraz lekki akcent przestrzenny pozostają; długa scena sticky i fotograficzne otwarcie zostały zastąpione czytelniejszym przedstawieniem produktu. Nowa kompozycja nie jest jeszcze zatwierdzona przez użytkowniczkę.
+
+Dostarczony dokument `PetConnectApp_Specyfikacja.html` odczytano jako materiał referencyjny. Potwierdza paletę, znak marki i ton komunikacji; zawiera dwa materiały App Store oraz starsze informacje / roadmapę. Bezpośrednie ustalenie użytkowniczki o niewdrożonym marketplace pozostaje nadrzędne. Materiałów o finansach, fundraisingu, prognozach i wewnętrznych ryzykach nie przenosimy na landing ani do repo. Pełny dokument pozostaje poza repozytorium. Kolory i gradient zostały dodatkowo potwierdzone w kodzie aplikacji (`appColors.js`, `GradientButton.tsx`).
+
+Wszystkie ustalenia biznesowe pozostają: polska aplikacja dostępna, angielska w przygotowaniu bez terminu; kontakt contact@petconnectapp.eu; brak obietnic marketplace; brak fikcyjnych opinii i wyników. Ekrany EN są oznaczonym podglądem koncepcyjnym, nie gotową angielską aplikacją. Poprzedni brief i rejestr poniżej dokumentują przebieg; bieżące wykonanie opisuje DESIGN.md, a pierwszą interpretację zachowano w design-history/.
+
+---
+
 # PetConnect UK — brief i rejestr decyzji
 
 ## Zakres

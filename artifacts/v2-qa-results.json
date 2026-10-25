@@ -1,0 +1,219 @@
+{
+  "version": 2,
+  "checks": [
+    {
+      "name": "Clear product opening, EN status and no marketplace promises",
+      "status": "passed"
+    },
+    {
+      "name": "One upright Satoshi family, consistent section headings and larger text",
+      "status": "passed",
+      "data": {
+        "heads": [
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          },
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          },
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          },
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          },
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          },
+          {
+            "size": "40px",
+            "weight": "700",
+            "family": "Satoshi, Arial, sans-serif"
+          }
+        ],
+        "italic": [],
+        "text": [
+          {
+            "selector": ".hero-description",
+            "size": "19px"
+          },
+          {
+            "selector": ".step p",
+            "size": "17px"
+          },
+          {
+            "selector": ".benefit p",
+            "size": "17px"
+          },
+          {
+            "selector": ".feature-explanation p",
+            "size": "17px"
+          },
+          {
+            "selector": ".form-field label",
+            "size": "16px"
+          },
+          {
+            "selector": ".form-bottom p",
+            "size": "14px"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Exact app colour and original horizontal gradient",
+      "status": "passed",
+      "data": {
+        "header": "rgb(161, 42, 112)",
+        "heading": "rgb(161, 42, 112)",
+        "gradient": "linear-gradient(90deg, rgb(223, 13, 84), rgb(120, 21, 102))",
+        "body": "rgb(86, 86, 86)"
+      }
+    },
+    {
+      "name": "All three steps and benefits readable without interaction",
+      "status": "passed"
+    },
+    {
+      "name": "Section anchors and real Polish store destinations",
+      "status": "passed"
+    },
+    {
+      "name": "All three demo modes, local actions and keyboard navigation",
+      "status": "passed"
+    },
+    {
+      "name": "Contact validation, business topic and correctly encoded real email draft",
+      "status": "passed"
+    },
+    {
+      "name": "Light reversible 3D movement without sticky section",
+      "status": "passed",
+      "data": [
+        {
+          "state": "entry",
+          "transform": "matrix3d(0.976807, 0.0511923, 0.207912, 0, -0.052336, 0.99863, 0, 0, -0.207627, -0.0108813, 0.978148, 0, 0, 0, 0, 1)"
+        },
+        {
+          "state": "end",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)"
+        },
+        {
+          "state": "reverse",
+          "transform": "matrix3d(0.976807, 0.0511923, 0.207912, 0, -0.052336, 0.99863, 0, 0, -0.207627, -0.0108813, 0.978148, 0, 0, 0, 0, 1)"
+        }
+      ]
+    },
+    {
+      "name": "Six widths, all sections, no overflow and correct responsive tab semantics",
+      "status": "passed",
+      "data": [
+        {
+          "width": 1440,
+          "overflow": false,
+          "tabOrientation": "vertical"
+        },
+        {
+          "width": 1024,
+          "overflow": false,
+          "tabOrientation": "vertical"
+        },
+        {
+          "width": 768,
+          "overflow": false,
+          "tabOrientation": "vertical"
+        },
+        {
+          "width": 640,
+          "overflow": false,
+          "tabOrientation": "horizontal"
+        },
+        {
+          "width": 390,
+          "overflow": false,
+          "tabOrientation": "horizontal"
+        },
+        {
+          "width": 320,
+          "overflow": false,
+          "tabOrientation": "horizontal"
+        }
+      ]
+    },
+    {
+      "name": "Mobile menu, Escape and section navigation",
+      "status": "passed"
+    },
+    {
+      "name": "All local media and Satoshi loaded",
+      "status": "passed"
+    },
+    {
+      "name": "Reduced motion stops animation and keeps demo working",
+      "status": "passed"
+    },
+    {
+      "name": "No JavaScript errors or failed requests",
+      "status": "passed"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "tabOrientation": "vertical"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "tabOrientation": "vertical"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "tabOrientation": "vertical"
+    },
+    {
+      "width": 640,
+      "overflow": false,
+      "tabOrientation": "horizontal"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "tabOrientation": "horizontal"
+    },
+    {
+      "width": 320,
+      "overflow": false,
+      "tabOrientation": "horizontal"
+    }
+  ],
+  "motion": [
+    {
+      "state": "entry",
+      "transform": "matrix3d(0.976807, 0.0511923, 0.207912, 0, -0.052336, 0.99863, 0, 0, -0.207627, -0.0108813, 0.978148, 0, 0, 0, 0, 1)"
+    },
+    {
+      "state": "end",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+      "state": "reverse",
+      "transform": "matrix3d(0.976807, 0.0511923, 0.207912, 0, -0.052336, 0.99863, 0, 0, -0.207627, -0.0108813, 0.978148, 0, 0, 0, 0, 1)"
+    }
+  ],
+  "errors": [],
+  "failedRequests": [],
+  "status": "passed"
+}

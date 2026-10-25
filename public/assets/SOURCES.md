@@ -18,3 +18,9 @@ Pierwotne autorstwo i warunki licencji fotografii oraz osobna licencja fontu nie
 Ekrany angielskie i mapa są własną lokalną prezentacją koncepcyjną na podstawie kodu funkcji. Nie są screenshotami gotowej angielskiej aplikacji, prawdziwymi profilami, punktami UK ani danymi produkcyjnymi. Autentyczne aktualne screenshoty zostały zaoferowane przez użytkowniczkę i mogą zostać dosłane. W projekcie nie ma fikcyjnych testimonials i statystyk.
 
 Grafika mapy i proste ikony liniowe są napisane w kodzie tego projektu; znak marki pochodzi z aplikacji. Bez nowych materiałów stockowych, zewnętrznych trackerów i generowanych obrazów.
+
+## Wersja 2 — materiały i odniesienia
+
+- `preview-connect.png` i `preview-discover.png`: przechwycone w Chromium obrazy własnej, działającej prezentacji koncepcyjnej. Ten sam font i kolory co w aplikacji; bez danych rzeczywistych użytkowników. To nie są screenshoty gotowej wersji EN.
+- `PetConnectApp_Specyfikacja.html`, dostarczony przez użytkowniczkę: referencja palety, znaku i materiałów App Store. Dokumentu ani jego informacji biznesowych nie kopiowano do publicznych zasobów. Osadzone materiały App Store obejmują także starszą nawigację z marketplace, dlatego nie zostały użyte jako dowód dostępności tej funkcji.
+- `src/common/buttons/GradientButton.tsx` w repo mobilnym: potwierdza poziomy gradient #DF0D54 → #781566. `appColors.js` potwierdza #A12A70 jako primary-600, #000000 i #FFFFFF.

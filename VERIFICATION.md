@@ -1,3 +1,26 @@
+# Wersja 2 — aktualna weryfikacja po uwagach o czytelności
+
+Wersja 2 zastępuje odrzuconą pierwszą propozycję. Obejrzano nowe otwarcie, całą stronę, kroki, korzyści, prezentację, kontakt i widoki mobilne. Zastosowano dokładne kolory aplikacji, jej poziomy gradient i Satoshi bez kursywy. Zachowano nazwę PetConnect bez kropki. Układ nie ma już długiej sceny sticky, a podstawowe korzyści są widoczne bez klikania.
+
+- `npm run check` i `npm run build`: kod 0.
+- [artifacts/v2-qa-results.json](artifacts/v2-qa-results.json): **13 grup sprawdzeń**, wszystkie przeszły. Obejmują treść, fonty, kolory, kroki i korzyści, kotwice/sklepy, wszystkie interakcje demonstracji i klawiaturę, kontakt, odwracalny ruch, sześć szerokości, menu, media, reduced motion oraz błędy JS/requestów.
+- [artifacts/v2-contrast.json](artifacts/v2-contrast.json): siedem zmierzonych par kolorów. Nawigacja 6,82:1, nagłówki/status na jasnym tle 6,42:1, opis 7,34:1; biały tekst na krańcach autentycznego gradientu 4,86:1 i 10,01:1. Wszystkie sprawdzone pary przekraczają 4,5:1.
+- [artifacts/v2-final-check.json](artifacts/v2-final-check.json): dodatkowo poprawiony kontur drugiego przycisku, świeże screenshoty z pustym formularzem, przyciski w jednym rzędzie i brak overflow na 640/390/320 px. Pierwsza fraza nagłówka mieści się w jednym wierszu na tych szerokościach.
+- [artifacts/v2-brand-check.json](artifacts/v2-brand-check.json): nazwa w każdym oznaczeniu marki dokładnie PetConnect, zero elementów brand-dot, zachowany Satoshi i brak kursywy.
+- Faktycznie sprawdzone w Chromium: 1440, 1024, 768, 640, 390 i 320 px. Brak błędów JavaScript i błędnych requestów. Nie jest to test natywnego Safari ani fizycznych telefonów.
+
+Weryfikacja wykryła i doprowadziła do poprawy warunków matchMedia (przy no-preference nie startowała animacja), brakującego konturu przycisku po wprowadzeniu gradientu i ułożenia przycisków na 320 px. Po poprawkach powtórzono właściwe kontrole. Nazwa bez kropki jest sprawdzona również jako tekst w DOM, a nie tylko przez ukrycie znaku w CSS.
+
+Podglądy: [cała strona](artifacts/v2-desktop-full.png), [otwarcie](artifacts/v2-desktop-hero.png), [mobile](artifacts/v2-mobile-390-hero.png). Poprzednie obrazy zachowano do porównania. Wersja 2 pozostaje propozycją do oceny użytkowniczki.
+
+Dostarczony HTML specyfikacji wykorzystano jako materiał referencyjny; jego pełnej zawartości i danych wewnętrznych nie umieszczono w repo. Starsze wzmianki o marketplace nie zastępują aktualnego ustalenia użytkowniczki. Podglądy EN pozostają oznaczoną koncepcją. Nie wysłano email, nie uruchomiono backendu ani aplikacji mobilnej i nie opublikowano witryny.
+
+Instrukcję start_skill w szkicu środowiska zaktualizowano do aktualnego nagłówka i stanu podglądu testowego. Zapis szkicu jest potwierdzony; jego utrwalenie nadal wymaga przejrzenia i zapisania zmian w ustawieniach oraz publikacji środowiska. Nie oznacza to publikacji strony.
+
+---
+
+## Historia sprawdzeń pierwszej wersji
+
 # Weryfikacja wykonania — 25 października 2026
 
 ## Wynik

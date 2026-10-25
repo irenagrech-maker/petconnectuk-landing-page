@@ -1,15 +1,15 @@
 # PetConnect UK
 
-Angielskojęzyczny landing page PetConnect. Fotografia, przestronna kompozycja i przestrzenna prezentacja aplikacji. Projekt lokalny, bez publikacji i bez połączenia z backendem aplikacji.
+Angielskojęzyczny landing page PetConnect, wersja 2 po uwagach o czytelności. Ekrany aplikacji w otwarciu, dokładna paleta marki, jeden spójny system Satoshi i widoczne korzyści. Projekt lokalny, bez publikacji i bez połączenia z backendem aplikacji.
 
 ## Podgląd projektu
 
 Zrzuty otwierają się bezpośrednio w GitHubie:
 
-- [Cała strona](artifacts/desktop-full.png)
-- [Pierwszy ekran](artifacts/desktop-hero.png)
-- [Telefon i prezentacja aplikacji](artifacts/motion-middle.png)
-- [Wersja mobilna](artifacts/mobile-390-hero.png)
+- [Cała strona](artifacts/v2-desktop-full.png)
+- [Pierwszy ekran](artifacts/v2-desktop-hero.png)
+- [Telefon i prezentacja aplikacji](artifacts/v2-desktop-preview.png)
+- [Wersja mobilna](artifacts/v2-mobile-390-hero.png)
 
 To obrazy gotowej strony. Animacje i interakcje działają po uruchomieniu projektu; publiczny adres strony nie został jeszcze utworzony.
 
@@ -40,7 +40,7 @@ npm run preview
 ## Co działa
 
 - Menu sekcyjne oraz mobilne menu z obsługą Escape.
-- Rytmiczne, odwracalne animacje przy naturalnym przewijaniu: fotografie oraz osobne plany przestrzennego telefonu.
+- Lekkie, odwracalne zmiany perspektywy telefonów przy naturalnym przewijaniu, bez długiej sekcji sticky.
 - Interaktywne zakładki **Connect / Learn / Discover** z obsługą klawiatury, lokalnym zapisem przykładu, rozwijanym opisem i zmianą przykładowego filtra mapy.
 - Oddzielny status **English: in development / Polish: available now** i prawdziwe linki sklepów.
 - Ścieżka usługodawcy ustawia odpowiedni temat kontaktu.
@@ -66,3 +66,5 @@ Przed publiczną publikacją: ustalić hosting i domenę, potwierdzić prawa do 
 ## Struktura
 
 `src/main.js` — treść, demonstracja, kontakt i ruch; `src/style.css` — system wizualny i responsywność; `public/assets/` — lokalne materiały; `artifacts/` — dowody przeglądu w Chromium. Dokumentacja pozostaje po polsku, interfejs po angielsku.
+
+Pierwsza, odrzucona propozycja pozostaje w historii Git i w `design-history/`. Nowa wersja 2 jest propozycją do oceny użytkowniczki. Dostarczona specyfikacja była materiałem referencyjnym; jej wewnętrznych danych nie dołączono do repozytorium.
