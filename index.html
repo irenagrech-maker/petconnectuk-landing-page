@@ -149,6 +149,8 @@
   .fine{font-size:12.5px; color:var(--ink-soft); margin-top:12px}
   .success{display:none; align-items:center; gap:10px; color:#1f7a4d; font-weight:700; font-size:14.5px}
   .success svg{flex:none}
+  .form-error{display:none; color:#b42318; font-weight:600; font-size:13px; margin-top:10px}
+  .btn[disabled]{opacity:.6; cursor:default}
 
   /* ---------- vapor particle stage (replaces the hero photo) ---------- */
   .vapor-stage{
@@ -339,13 +341,14 @@
           <h3>Be the first to know</h3>
           <div class="sub">Leave your email and we'll let you know the moment the English app is ready.</div>
           <form class="signup-form" data-signup>
-            <input type="email" required placeholder="you@email.com" aria-label="Email address">
+            <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address">
             <button class="btn" type="submit">Notify me</button>
           </form>
           <div class="success" data-success>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             You're on the list &mdash; we'll email you when it's ready.
           </div>
+          <div class="form-error" data-error>Something went wrong — please try again in a moment.</div>
           <div class="fine">One email, when it's ready. No spam, unsubscribe anytime.</div>
         </div>
       </div>
@@ -450,13 +453,14 @@
       </div>
       <div class="signup-card">
         <form class="signup-form" data-signup>
-          <input type="email" required placeholder="you@email.com" aria-label="Email address">
+          <input type="email" name="email" required placeholder="you@email.com" aria-label="Email address">
           <button class="btn" type="submit">Notify me</button>
         </form>
         <div class="success" data-success>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           You're on the list &mdash; we'll email you when it's ready.
         </div>
+        <div class="form-error" data-error>Something went wrong — please try again in a moment.</div>
         <div class="fine">One email, when it's ready. No spam, unsubscribe anytime.</div>
       </div>
     </div>
@@ -472,21 +476,22 @@
       <form class="contact" data-contact>
         <div>
           <label for="name">Name</label>
-          <input id="name" type="text" required>
+          <input id="name" name="name" type="text" required>
         </div>
         <div>
           <label for="email">Email</label>
-          <input id="email" type="email" required>
+          <input id="email" name="email" type="email" required>
         </div>
         <div>
           <label for="message">Message</label>
-          <textarea id="message" required></textarea>
+          <textarea id="message" name="message" required></textarea>
         </div>
         <button class="btn" type="submit">Send</button>
         <div class="success" data-success style="margin-top:4px">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Thanks &mdash; your message is in.
         </div>
+        <div class="form-error" data-error style="margin-top:4px">Something went wrong — please try again in a moment, or email us directly at contact@petconnectapp.eu.</div>
       </form>
     </div>
   </section>
@@ -889,22 +894,68 @@
     });
   })();
 
+  var WEB3FORMS_KEY = '4e4f3f2f-9159-4e19-917f-21e419390957';
+  function submitToWeb3Forms(payload){
+    return fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(Object.assign({ access_key: WEB3FORMS_KEY }, payload))
+    }).then(function(r){ return r.json(); }).then(function(data){
+      if (!data.success) throw new Error(data.message || 'Submission failed');
+      return data;
+    });
+  }
+
   document.querySelectorAll('[data-signup]').forEach(function(form){
     form.addEventListener('submit', function(e){
       e.preventDefault();
       var card = form.closest('.signup-card');
       var success = card.querySelector('[data-success]');
-      form.style.display = 'none';
-      success.style.display = 'flex';
+      var errorEl = card.querySelector('[data-error]');
+      var emailInput = form.querySelector('input[type=email]');
+      var btn = form.querySelector('button[type=submit]');
+      if (errorEl) errorEl.style.display = 'none';
+      btn.disabled = true;
+      submitToWeb3Forms({
+        subject: 'PetConnect English — notify me signup',
+        from_name: 'PetConnect English landing page',
+        email: emailInput.value,
+        message: 'New "notify me" signup for the English edition: ' + emailInput.value
+      }).then(function(){
+        form.style.display = 'none';
+        success.style.display = 'flex';
+      }).catch(function(){
+        btn.disabled = false;
+        if (errorEl) errorEl.style.display = 'block';
+      });
     });
   });
+
   var contactForm = document.querySelector('[data-contact]');
   if (contactForm){
     contactForm.addEventListener('submit', function(e){
       e.preventDefault();
-      contactForm.querySelectorAll('input, textarea, button[type=submit]').forEach(function(el){ el.style.display = 'none'; });
-      contactForm.querySelectorAll('label').forEach(function(el){ el.parentElement.style.display = 'none'; });
-      contactForm.querySelector('[data-success]').style.display = 'flex';
+      var nameInput = document.getElementById('name');
+      var emailInput = document.getElementById('email');
+      var messageInput = document.getElementById('message');
+      var btn = contactForm.querySelector('button[type=submit]');
+      var errorEl = contactForm.querySelector('[data-error]');
+      if (errorEl) errorEl.style.display = 'none';
+      btn.disabled = true;
+      submitToWeb3Forms({
+        subject: 'PetConnect English — contact form',
+        from_name: nameInput.value,
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value
+      }).then(function(){
+        contactForm.querySelectorAll('input, textarea, button[type=submit]').forEach(function(el){ el.style.display = 'none'; });
+        contactForm.querySelectorAll('label').forEach(function(el){ el.parentElement.style.display = 'none'; });
+        contactForm.querySelector('[data-success]').style.display = 'flex';
+      }).catch(function(){
+        btn.disabled = false;
+        if (errorEl) errorEl.style.display = 'block';
+      });
     });
   }
 </script>
