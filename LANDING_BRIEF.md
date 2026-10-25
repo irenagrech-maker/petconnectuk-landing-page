@@ -1,3 +1,11 @@
+# Aktualizacja 4 — zlecony Vapor Type, instalacja oczekuje na dostęp
+
+Użytkowniczka wskazała konkretny komponent React Bits Pro `@reactbits-starter/vapor-type-tw` i `<VaporType />`. Chce krótkie czytelne komunikaty o aplikacji na pierwszym ekranie, zmieniające się po wejściu myszą. Przewidziano również kliknięcie, dotyk i klawiaturę; zachowujemy Satoshi, paletę i czytelny stały nagłówek. Nie zastępujemy wskazanego komponentu autorską imitacją.
+
+Przygotowano techniczne wymagania React/TSX/Tailwind. Komponent nie został zainstalowany: brak `REACTBITS_LICENSE_KEY`, strony dokumentacji zwracają proxy 403, a próba shadcn nie pobrała katalogu rejestrów. Nie zgadnięto adresów Pro ani API propsów. Następny krok: oficjalna konfiguracja rejestrów i klucz prywatnie w środowisku; szczegóły w REACTBITS_SETUP.md. Nowa animacja nie jest jeszcze widoczna na stronie.
+
+---
+
 # Aktualizacja 3 — ciepłe zdjęcia i animacja
 
 Użytkowniczka uznała wersję 2 za dużo lepszą i zleciła dalsze rozwinięcie: dodać atrakcyjną animację, nowe wygenerowane zdjęcia pokazujące dobrą relację ludzi ze zwierzętami (w szczególności wspólny spacer kilku osób z psami) oraz dopracować angielskie podglądy na podstawie kompletu przesłanych screenów. Pozwoliła na wymyślone angielskie treści i podmianę fotografii. Zachowujemy czytelny układ v2, Satoshi, paletę aplikacji oraz nazwę PetConnect bez kropki.

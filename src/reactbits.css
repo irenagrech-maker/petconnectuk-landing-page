@@ -1,0 +1,14 @@
+/* Optional component stylesheet. Import with the licensed React component.
+   Exclude Tailwind Preflight to preserve the existing landing page styles. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@theme {
+  --font-sans: "Satoshi", sans-serif;
+  --color-primary: #a12a70;
+  --color-primary-foreground: #ffffff;
+  --color-background: #ffffff;
+  --color-foreground: #171717;
+  --color-muted-foreground: #565656;
+}

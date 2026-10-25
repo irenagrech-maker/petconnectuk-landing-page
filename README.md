@@ -38,6 +38,10 @@ npm run preview
 
 `dist/` zawiera gotową statyczną stronę. `base: './'` umożliwia późniejsze wdrożenie także pod ścieżką. Hosting, domena i publikacja pozostają do osobnego ustalenia. Nie są potrzebne zmienne środowiskowe ani klucze API.
 
+## Przygotowanie Vapor Type
+
+Na prośbę użytkowniczki dodano obsługę React/TSX i Tailwind pod komponent React Bits Pro. **Vapor Type nie został jeszcze pobrany ani zamontowany**: brak klucza w środowisku i dostępu do dokumentacji/rejestru. Bieżący wygląd strony pozostaje bez zmian. Szczegóły: [REACTBITS_SETUP.md](REACTBITS_SETUP.md).
+
 ## Co działa
 
 - Menu sekcyjne oraz mobilne menu z obsługą Escape.
