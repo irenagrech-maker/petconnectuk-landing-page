@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PetConnect English</title>
+<meta name="description" content="PetConnect is where animal lovers connect, share experiences, and look out for their pets together. The English edition is coming soon.">
+<link rel="canonical" href="https://petconnectapp.uk/">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://petconnectapp.uk/">
+<meta property="og:site_name" content="PetConnect">
+<meta property="og:title" content="PetConnect — Your place for pets and friends">
+<meta property="og:description" content="PetConnect is where animal lovers connect, share experiences, and look out for their pets together. The English edition is coming soon.">
+<meta property="og:image" content="https://petconnectapp.uk/assets/community.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PetConnect — Your place for pets and friends">
+<meta name="twitter:description" content="PetConnect is where animal lovers connect, share experiences, and look out for their pets together.">
+<meta name="twitter:image" content="https://petconnectapp.uk/assets/community.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
@@ -51,6 +64,24 @@
     position:absolute; inset:0; overflow:hidden; pointer-events:none;
   }
   .paw-field svg{position:absolute; opacity:.1}
+
+  /* ---------- critters (Fifi, peeking from the top-left of the pink section) ---------- */
+  .critter-dock{ position:absolute; pointer-events:none; z-index:3; width:110px; height:106px; }
+  .fifi-wrap{ position:relative; width:100%; height:100%; }
+  /* the source <video> is never shown directly: it holds color on top and an
+     alpha mask on the bottom (see the compositing script below), and a canvas
+     draws the real, transparent result. This works on every browser, since it
+     doesn't depend on a video codec's own alpha-channel support (Safari has
+     none for the formats here). */
+  .fifi-wrap video{ position:absolute; width:1px; height:1px; opacity:0; pointer-events:none; }
+  .fifi-wrap canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  .critter-dock-fifi{ right:10px; top:76px; }
+  .critter-dock-fifi .fifi-wrap{ transform:scaleX(-1); }
+
+  @media (max-width:480px){
+    .critter-dock{ display:none; }
+  }
 
   /* ---------- header ---------- */
   header{
@@ -331,6 +362,12 @@
   <section class="hero">
     <div class="glow g1" aria-hidden="true"></div>
     <div class="glow g2" aria-hidden="true"></div>
+    <div class="critter-dock critter-dock-fifi" aria-hidden="true">
+      <div class="fifi-wrap">
+        <video class="fifi-src" src="assets/fifi-combo.mp4" autoplay muted loop playsinline disablepictureinpicture></video>
+        <canvas class="fifi-canvas" aria-hidden="true"></canvas>
+      </div>
+    </div>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow"><span class="dot"></span>English edition &mdash; coming soon</span>
@@ -471,7 +508,7 @@
       <div>
         <span class="kicker">Get in touch</span>
         <h2>Questions, feedback, or a partnership idea?</h2>
-        <p style="color:var(--ink-soft); margin-top:14px">Send us a message below and we'll get back to you.</p>
+        <p style="color:var(--ink-soft); margin-top:14px">Send us a message below and we'll get back to you, or email us directly at <a href="mailto:contact@petconnectapp.uk" style="color:var(--accent-solid); font-weight:600">contact@petconnectapp.uk</a>.</p>
       </div>
       <form class="contact" data-contact>
         <div>
@@ -491,7 +528,7 @@
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#e3f6ea"/><path d="M7 12.5l3 3 7-7" stroke="#1f7a4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Thanks &mdash; your message is in.
         </div>
-        <div class="form-error" data-error style="margin-top:4px">Something went wrong — please try again in a moment, or email us directly at contact@petconnectapp.eu.</div>
+        <div class="form-error" data-error style="margin-top:4px">Something went wrong — please try again in a moment, or email us directly at <a href="mailto:contact@petconnectapp.uk" style="color:inherit; text-decoration:underline">contact@petconnectapp.uk</a>.</div>
       </form>
     </div>
   </section>
@@ -505,6 +542,7 @@
         PetConnect
       </a>
       <div class="footer-links">
+        <a href="mailto:contact@petconnectapp.uk">contact@petconnectapp.uk</a>
         <a href="https://petconnectapp.eu/regulamin" target="_blank" rel="noopener">Terms of Service</a>
         <a href="https://petconnectapp.eu/politykaprywatnosci" target="_blank" rel="noopener">Privacy Policy</a>
       </div>
@@ -852,7 +890,10 @@
       canvas.addEventListener('touchend', function(){ mouse.active = false; });
 
       canvas.addEventListener('click', function(){
-        if (phase === 'hold') setPhase('dissolve', performance.now());
+        // skip ahead works the moment you click, whatever the text is doing
+        // right now (still forming, fully held, or already dissolving) —
+        // only a dissolve already in progress is left alone.
+        if (phase !== 'dissolve') setPhase('dissolve', performance.now());
       });
 
       function init(){
@@ -958,6 +999,62 @@
       });
     });
   }
+
+  (function(){
+    // fifi-combo.mp4 stacks two frames per video frame: real color on top,
+    // an alpha mask (white = opaque, black = transparent) on the bottom.
+    // Every frame we copy both halves into one canvas ImageData, using the
+    // mask's brightness as the alpha channel, and paint that — giving a
+    // genuinely transparent, looping clip on any browser that can draw a
+    // <video> to a <canvas>, with no dependency on a codec's own alpha support.
+    function initFifi(wrap){
+      var video = wrap.querySelector('.fifi-src');
+      var canvas = wrap.querySelector('.fifi-canvas');
+      if (!video || !canvas) return;
+      var ctx = canvas.getContext('2d');
+      var off = document.createElement('canvas');
+      var offCtx = off.getContext('2d', { willReadFrequently: true });
+      var w = 0, halfH = 0, fullH = 0, raf;
+
+      function setup(){
+        w = video.videoWidth;
+        fullH = video.videoHeight;
+        halfH = fullH / 2;
+        if (!w || !fullH) return false;
+        off.width = w; off.height = fullH;
+        canvas.width = w; canvas.height = halfH;
+        return true;
+      }
+
+      function draw(){
+        if (video.readyState >= 2 && (w || setup())){
+          offCtx.drawImage(video, 0, 0, w, fullH);
+          var full = offCtx.getImageData(0, 0, w, fullH).data;
+          var out = ctx.createImageData(w, halfH);
+          var od = out.data;
+          var rowLen = w * 4;
+          for (var y = 0; y < halfH; y++){
+            var colorStart = y * rowLen;
+            var alphaStart = (y + halfH) * rowLen;
+            for (var x = 0; x < rowLen; x += 4){
+              var oi = colorStart + x, ai = alphaStart + x;
+              od[oi]   = full[oi];
+              od[oi+1] = full[oi+1];
+              od[oi+2] = full[oi+2];
+              od[oi+3] = full[ai];
+            }
+          }
+          ctx.putImageData(out, 0, 0);
+        }
+        if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(draw);
+        else raf = requestAnimationFrame(draw);
+      }
+
+      video.addEventListener('loadedmetadata', setup);
+      draw();
+    }
+    document.querySelectorAll('.fifi-wrap').forEach(initFifi);
+  })();
 </script>
 
 </body>
